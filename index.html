@@ -18,7 +18,7 @@
    COLOUR coral field, plum ink, mint and honey accents; white sections below
    TYPE Baloo 2 display + Nunito text
    LAYOUT laptop: title band over a full-width scene; phone: title, scene, form */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1c1218);--ink:light-dark(#3a1f2b,#f6e9ee);--soft:light-dark(#6d5560,#c9b3bc);--coral:#ff7a59;--coralD:light-dark(#e85d3c,#ff8f72);--mint:#7fd8be;--honey:#ffd27a;--panel:light-dark(#fff4ef,#2a1b23);--line:light-dark(#f1d9cf,#45303a)}
+:root{color-scheme:light dark;--bg:light-dark(#fff4ef,#1c1218);--ink:light-dark(#3a1f2b,#f6e9ee);--soft:light-dark(#6d5560,#c9b3bc);--coral:#ff7a59;--coralD:light-dark(#e85d3c,#ff8f72);--mint:#7fd8be;--honey:#ffd27a;--panel:light-dark(#ffffff,#2a1b23);--line:light-dark(#f1d9cf,#45303a)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html{scroll-padding-top:72px}
@@ -32,7 +32,7 @@ h3{font-size:22px;font-weight:700}
 p{margin:0}
 .band{padding-block:clamp(36px,5vw,72px);padding-inline:max(5vw,16px)}
 .wrap{max-width:1180px;margin:0 auto}
-nav{position:sticky;top:0;z-index:5;background:var(--coral);color:#3a1f2b;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px max(5vw,16px)}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);color:var(--ink);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px max(5vw,16px)}
 .brand{font:800 24px "Baloo 2",sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px}
 nav .links{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-weight:700}
 nav .links a{text-decoration:none}
@@ -41,11 +41,23 @@ nav .links a{text-decoration:none}
 .btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
 .btn.dark{background:#3a1f2b;color:#fff}
 .btn.light{background:#fff;color:#3a1f2b}
-.hero{background:var(--coral);color:#3a1f2b;padding-bottom:0}
+.hero{background:var(--bg);color:var(--ink);padding-bottom:0}
+.hero .tag{font:700 18px "Baloo 2",sans-serif;color:var(--coralD);margin-top:14px}
+.btn.coral{background:var(--coral);color:#3a1f2b}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.note{font-size:13px;color:var(--soft);margin-top:10px;font-weight:600}
+.lang{background:var(--bg)}
+.lang .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{background:var(--panel);border:2px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:800}
+.chips span:nth-child(3n+1){border-color:var(--mint)}
+.chips span:nth-child(3n+2){border-color:var(--honey)}
+.chips span:nth-child(3n){border-color:var(--coral)}
+.lang p{color:var(--soft);margin-top:14px}
 .hero .top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 48px;align-items:end}
-.hero p.lead{font-size:20px;max-width:34em;font-weight:600}
+.hero p.lead{font-size:20px;max-width:34em;font-weight:600;color:var(--soft)}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.scene{margin-top:28px;border-radius:28px 28px 0 0;overflow:hidden;height:clamp(300px,38vw,440px);position:relative}
+.scene{margin-top:28px;border-radius:28px;overflow:hidden;height:clamp(300px,38vw,440px);position:relative}
 .scene svg{position:absolute;inset:0;width:100%;height:100%}
 .place{position:absolute;bottom:14px;font:700 15px Nunito,sans-serif;color:#fff;background:rgba(0,0,0,.28);padding:4px 12px;border-radius:99px}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:32px}
@@ -85,7 +97,7 @@ input,select{font:16px Nunito,sans-serif;min-height:48px;padding:0 14px;border-r
 .faq details p{margin-top:10px;color:var(--soft)}
 footer{background:#3a1f2b;color:#f3d9e3;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px}
 footer a{color:#fff;font-weight:800}
-@media(max-width:860px){.hero .top,.hug .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.lang .grid,.hero .top,.hug .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:330px}}
 @media(prefers-reduced-motion:reduce){.fly{display:none}}
 </style>
@@ -93,18 +105,19 @@ footer a{color:#fff;font-weight:800}
 <body>
 <nav>
   <a class="brand" href="#top"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64" style="height:52px;width:auto"></a>
-  <div class="links"><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn dark" href="#reserve">Reserve a pair</a></div>
+  <div class="links"><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn coral" href="#reserve">Reserve a pair</a></div>
 </nav>
 
 <header class="band hero" id="top">
   <div class="wrap">
     <div class="top">
       <div>
-        <h1>One Cubbi, two homes, one family.</h1>
+        <h1>No distance is bigger than love.</h1>
+        <p class="tag">One Cubbi, two homes, one family.</p>
       </div>
       <div>
-        <p class="lead">Two matching bears. One stays with your child, the other goes to someone they love far away. Tap the bear's heart with a phone and hear their voice, in their own language.</p>
-        <div class="cta"><a class="btn dark" href="#reserve">Reserve for $5</a><a class="btn light" href="demo.html">Try the Twin Hug demo</a></div>
+        <p class="lead">Two little companions. Two different homes. The voices you love, always close. One Cubbi stays with your child, its twin goes to someone they love far away, and a tap on its heart plays that loved one's voice.</p>
+        <div class="cta"><a class="btn coral" href="#reserve">Bring love closer</a><a class="btn ghost" href="demo.html">Try the Twin Hug demo</a></div>
       </div>
     </div>
     <div class="scene" role="img" aria-label="The Moon twin under a New York night sky and the Sun twin under a Dakar sky, each holding half of a heart, joined by a dotted line with a heart travelling between them">
@@ -145,6 +158,7 @@ footer a{color:#fff;font-weight:800}
       <span class="place" style="left:16px">New York, 8:00 pm</span>
       <span class="place" style="right:16px">Dakar, 1:00 am</span>
     </div>
+    <p class="note">Illustrations of Cubbi. Plush samples are in development.</p>
   </div>
 </header>
 
@@ -174,7 +188,8 @@ footer a{color:#fff;font-weight:800}
 <section class="band hug" id="hug">
   <div class="wrap grid">
     <div>
-      <h2>Twin Hug: it only works when both bears are touched</h2>
+      <h2>Love never sleeps.</h2>
+      <p style="margin-top:12px;color:#f3d9e3;font-size:19px">Even when the world is asleep, a hug can be waiting for you. Twin Hug only works when both Cubbis are touched.</p>
       <ol>
         <li>Your child taps their bear. Grandma's phone says: "Awa is hugging her bear right now."</li>
         <li>If grandma taps her twin within a few minutes, the hug connects on both phones, and it's saved to your family's Hug Calendar.</li>
@@ -186,6 +201,18 @@ footer a{color:#fff;font-weight:800}
       <h3>See it on two phones</h3>
       <p>Try the clickable demo: New York on one side, Dakar on the other, with grandma awake or asleep.</p>
       <a class="btn light" href="demo.html">Open the Twin Hug demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="band lang" id="languages">
+  <div class="wrap grid">
+    <div>
+      <h2>Grandma's lullabies, in grandma's language.</h2>
+      <p>Children growing up far from their grandparents often lose their language. With CubbiKind, every story, prayer and lullaby is recorded in the voice and language of the person who loves them, and kept for years.</p>
+    </div>
+    <div class="chips" aria-label="Examples of languages families can record in">
+      <span>Wolof</span><span>Arabic</span><span>Spanish</span><span>Somali</span><span>Tagalog</span><span>French</span><span>Yoruba</span><span>Haitian Creole</span><span>Portuguese</span><span>Hindi</span><span>Vietnamese</span><span>Any language</span>
     </div>
   </div>
 </section>
@@ -206,10 +233,11 @@ footer a{color:#fff;font-weight:800}
   <div class="wrap">
     <h2>Our promises to parents</h2>
     <ul>
-      <li>No batteries, chips that need charging, cameras or microphones inside the bear. The tag in its heart is thin and battery-free.</li>
-      <li>Soft organic cotton and recycled fill, embroidered eyes and no small parts. Every batch is safety-tested by an independent lab.</li>
+      <li>No batteries, cameras or microphones inside. The tag in its heart is thin and battery-free; the voice plays from your phone.</li>
+      <li>Designed with soft organic cotton, recycled fill and embroidered eyes. Every production batch will be tested by an independent, CPSC-accepted lab before anything ships.</li>
       <li>Adults run the account. You decide who joins your family and what gets recorded.</li>
-      <li>No ads, no selling data, and no AI training on your family's voices. Delete or download everything at any time.</li>
+      <li>No ads, no selling data, and no AI training on your family's voices.</li>
+      <li>Your recordings are yours. Download them any time, and if CubbiKind ever closes, every family gets time and a simple way to keep them.</li>
     </ul>
   </div>
 </section>
@@ -219,7 +247,7 @@ footer a{color:#fff;font-weight:800}
     <div>
       <h2>Reserve your twin pair</h2>
       <div class="price"><b>$49</b><s>$64 planned retail</s></div>
-      <p>Reserve with a $5 deposit to lock the early-bird price of $49 for a twin pair. Your $5 is fully refundable at any time until your bears ship, and it counts toward your order.</p>
+      <p>A $5 VIP reservation guarantees you the $49 early-bird price (planned retail $64) when our crowdfunding campaign opens. Reservers hear first, before it goes public. Your $5 is refundable at any time, and refunded once you back the campaign.</p>
       <p class="small" style="margin-top:14px">We'll only make the first bears once enough families reserve. You'll hear from us before anything is charged beyond the deposit.</p>
     </div>
     <form id="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -256,7 +284,9 @@ footer a{color:#fff;font-weight:800}
     <details><summary>What phones work?</summary><p>Most iPhones and Android phones from recent years can read the tag in the heart. Every bear also has a printed code on its label for older phones.</p></details>
     <details><summary>Does grandma need an app?</summary><p>No. She taps her bear with her phone and her family page opens in the browser. Messages and invites can come by WhatsApp or text.</p></details>
     <details><summary>When will the bears ship?</summary><p>We're finishing samples and testing with our first families. Reservers will get the date first, before we take any full payment.</p></details>
-    <details><summary>Can I get my $5 back?</summary><p>Yes, at any time until your bears ship. Just reply to any of our emails.</p></details>
+    <details><summary>How does the $5 reservation work?</summary><p>It saves your place and your $49 early-bird price. When our crowdfunding campaign opens, reservers get the link first. Once you back the campaign, we refund your $5. Changed your mind? Reply to any of our emails and we refund it right away.</p></details>
+    <details><summary>Are these the real toys?</summary><p>Not yet. The pictures on this page are illustrations of Cubbi. We are making the first plush samples now and will show real photos before the campaign opens.</p></details>
+    <details><summary>What happens to our recordings if CubbiKind closes?</summary><p>They stay yours. You can download every recording at any time, and if we ever shut down, every family will get advance notice and a simple way to keep them.</p></details>
   </div>
 </section>
 
