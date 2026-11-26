@@ -1,9 +1,9 @@
-# CubbiKind Twins
+# Tukkibear Twins
 
-Waitlist site and Cubbi Hug demo for CubbiKind Twins: one bear, two homes, one family.
+Waitlist site and Tukki Hug demo for Tukkibear Twins: one bear, two homes, one family.
 
 - `index.html`: waitlist page with $5 refundable reservation (Netlify Forms)
-- `demo.html`: clickable Cubbi Hug demo
+- `demo.html`: clickable Tukki Hug demo
 
 Set the Stripe Payment Link in `RESERVE_URL` at the bottom of `index.html`.
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cubbi Hug Demo</title>
+<title>Tukki Hug Demo</title>
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,10 +88,10 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 <div class="top">
   <div class="row">
     <div>
-      <a class="back" href="index.html">← Back to CubbiKind</a>
-      <h1>Cubbi Hug demo</h1>
-      <p>Tap the heart on Awa's Cubbi Moon, send a hug, then answer it from Mame Fatou's Cubbi Sun.</p>
-      <span class="demo-tag">Demonstration · simulated until the CubbiKind app launches</span>
+      <a class="back" href="index.html">← Back to Tukkibear</a>
+      <h1>Tukki Hug demo</h1>
+      <p>Tap the heart on Awa's Tukki Moon, send a hug, then answer it from Mame Fatou's Tukki Sun.</p>
+      <span class="demo-tag">Demonstration · simulated until the Tukkibear app launches</span>
     </div>
     <div class="ctrl">
       <div class="seg" role="group" aria-label="Scenario">
@@ -174,7 +174,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   }
   function kidPlay() {
     let p = 0;
-    kBody.innerHTML = `<p class="hint">Mame Fatou is reading</p><p class="sub">"Leuk the hare", in Wolof · 1:12</p><div class="wave">${'<i></i>'.repeat(9).replace(/<i>/g, () => `<i style="animation-delay:${(Math.random() * .8).toFixed(2)}s">`)}</div><div class="meter"><b id="m"></b></div><button class="pbtn" id="sendHug">Send a Cubbi Hug</button>`;
+    kBody.innerHTML = `<p class="hint">Mame Fatou is reading</p><p class="sub">"Leuk the hare", in Wolof · 1:12</p><div class="wave">${'<i></i>'.repeat(9).replace(/<i>/g, () => `<i style="animation-delay:${(Math.random() * .8).toFixed(2)}s">`)}</div><div class="meter"><b id="m"></b></div><button class="pbtn" id="sendHug">Send a Tukki Hug</button>`;
     stop(); timer = setInterval(() => { p = Math.min(100, p + 2.5); $('m').style.width = p + '%'; if (p >= 100) stop(); }, 100);
     $('sendHug').onclick = kidWait;
   }
@@ -184,10 +184,10 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
     kBody.innerHTML = bear('kWait', false, "Awa's bear") + `<p class="hint">Hug sent to Mame Fatou</p><p class="sub">Waiting for her to hug back</p><p class="count" id="cd">5:00</p>`;
     if (scen === 'awake') {
       gma.className = 'screen dakar';
-      gBody.innerHTML = `<div class="note"><b>CubbiKind</b>Awa is hugging her bear right now. Hug back within 5 minutes to connect.</div>` + bear('gHeart', true, "Tap the heart on Mame Fatou's bear") + `<p class="hint">Tap your twin's heart</p>`;
+      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Awa is hugging her bear right now. Hug back within 5 minutes to connect.</div>` + bear('gHeart', true, "Tap the heart on Mame Fatou's bear") + `<p class="hint">Tap your twin's heart</p>`;
       $('gHeart').onclick = connect;
     } else {
-      gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><div class="note"><b>CubbiKind · silent</b>Awa is hugging her bear right now.</div>`;
+      gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><div class="note"><b>Tukkibear · silent</b>Awa is hugging her bear right now.</div>`;
     }
     timer = setInterval(() => {
       secs -= 5; const m = Math.floor(secs / 60), s = String(secs % 60).padStart(2, '0');
@@ -204,7 +204,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   function hugLeft() {
     if (scen === 'awake') {
       kBody.innerHTML = bear('kLeft', false, "Awa's bear") + `<p class="hint">Your hug is waiting for Mame Fatou</p><p class="sub">She'll get it as soon as she picks up her bear</p>`;
-      gBody.innerHTML = `<div class="note"><b>CubbiKind</b>You missed a hug from Awa. Hug back now.</div>` + bear('gLate', true, "Tap the heart on Mame Fatou's bear to hug back") + `<p class="hint">Tap your twin's heart</p>`;
+      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>You missed a hug from Awa. Hug back now.</div>` + bear('gLate', true, "Tap the heart on Mame Fatou's bear to hug back") + `<p class="hint">Tap your twin's heart</p>`;
       $('gLate').onclick = () => { chime(); today = .5; drawCal(); gBody.innerHTML = bear('gL2', false, "Mame Fatou's bear") + `<p class="big">Hug sent back</p>`; kBody.innerHTML = bear('kL2', false, "Awa's bear") + `<p class="big">Mame Fatou hugged you back</p>`; burst($('kBurst')); burst($('gBurst')); };
       return;
     }
@@ -216,7 +216,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   function morning() {
     $('gTime').textContent = '7:00 am'; $('kTime').textContent = '2:00 am';
     gma.className = 'screen morning';
-    gBody.innerHTML = `<div class="note"><b>CubbiKind</b>Awa left you a hug last night.</div>` + bear('gBack', true, "Tap the heart on Mame Fatou's bear to hug back") + `<p class="hint">Tap your twin's heart to hug back</p>`;
+    gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Awa left you a hug last night.</div>` + bear('gBack', true, "Tap the heart on Mame Fatou's bear to hug back") + `<p class="hint">Tap your twin's heart to hug back</p>`;
     $('gBack').onclick = huggedBack;
   }
   function huggedBack() {
