@@ -230,7 +230,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   <div class="wrap">
     <a href="#top" class="logo"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64"></a>
     <div class="links">
-      <a href="#how">How it works</a><a href="#twins">The Cubbies</a><a href="#twin-hug">Twin Hug</a><a href="#gift">The gift</a><a href="#faq">FAQ</a>
+      <a href="#how">How it works</a><a href="#twins">The Cubbies</a><a href="#cubbi-hug">Cubbi Hug</a><a href="#gift">The gift</a><a href="#faq">FAQ</a>
       <a class="btn coral" href="#reserve">Reserve a pair</a>
     </div>
   </div>
@@ -314,7 +314,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
 </section>
 
 
-<section class="hug" id="twin-hug" aria-labelledby="hugTitle">
+<section class="hug" id="cubbi-hug" aria-labelledby="hugTitle">
   <div class="sky" id="sky">
     <div class="night stars">
       <span class="orb" aria-hidden="true"></span>
@@ -330,11 +330,11 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   </div>
   <div class="hugtext">
     <h2 id="hugTitle">Love never sleeps.</h2>
-    <p class="lead">Even when the world is asleep, a hug can be waiting for you. Twin Hug connects only when both Cubbis are touched. If one home is asleep, the hug waits until morning.</p>
+    <p class="lead">Even when the world is asleep, a hug can be waiting for you. Cubbi Hug connects only when both Cubbis are touched. If one home is asleep, the hug waits until morning.</p>
     <span class="demo-tag">Demonstration · simulated until the CubbiKind app launches</span>
     <div class="row">
       <button class="btn coral" id="sendHug" type="button">Send a hug from New York</button>
-      <a class="btn light" href="demo.html">Experience Twin Hug on two phones</a>
+      <a class="btn light" href="demo.html">Experience Cubbi Hug on two phones</a>
     </div>
     <p class="status" id="hugStatus" aria-live="polite"></p>
     <ol>
@@ -463,7 +463,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
     <details><summary>How does the $5 reservation work?</summary><p>It saves your place and your $49 early-bird price. When our crowdfunding campaign opens, reservers get the link first. Once you order, we refund your $5. Changed your mind? Reply to any of our emails and we refund it right away.</p></details>
     <details><summary>When will Cubbi ship?</summary><p>We're making the first samples and testing with our first families. Reservers will get the date first, before any order is taken.</p></details>
     <details><summary>Are these photos of the real toys?</summary><p>Not yet. The photographs are concept visualizations of the planned design, and the drawings are illustrations. Physical samples are in development, and we'll share real photos before the campaign opens.</p></details>
-    <details><summary>Is Twin Hug working today?</summary><p>Twin Hug on this site is a demonstration. The real feature will arrive with the CubbiKind app, and we'll share it with our first families before launch.</p></details>
+    <details><summary>Is Cubbi Hug working today?</summary><p>Cubbi Hug on this site is a demonstration. The real feature will arrive with the CubbiKind app, and we'll share it with our first families before launch.</p></details>
     <details><summary>What happens to our recordings if CubbiKind closes?</summary><p>They stay yours. You can download every recording at any time, and if we ever shut down, every family will get advance notice and a simple way to keep them.</p></details>
     </div>
   </div>
@@ -475,10 +475,10 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
       <img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64">
       <p style="margin-top:16px;font:800 24px 'Baloo 2',sans-serif;color:#fff">Connecting families through Cubbies.</p>
       <p style="margin-top:4px;font:700 18px 'Baloo 2',sans-serif;color:#ffd27a">One Cubbi, two homes, one family.</p>
-      <p class="small">Product photographs are concept visualizations. Physical samples are in development and final production details may vary. Twin Hug on this site is a demonstration.</p>
+      <p class="small">Product photographs are concept visualizations. Physical samples are in development and final production details may vary. Cubbi Hug on this site is a demonstration.</p>
     </div>
     <div>
-      <p><a href="#twins">The twins</a> · <a href="#how">How it works</a> · <a href="demo.html">Twin Hug demo</a> · <a href="#reserve">Reserve</a></p>
+      <p><a href="#twins">The twins</a> · <a href="#how">How it works</a> · <a href="demo.html">Cubbi Hug demo</a> · <a href="#reserve">Reserve</a></p>
       <p class="small">© 2026 CubbiKind.</p>
       <p class="small">Designed &amp; Developed by <a href="https://dalaltechnologies.com/en/">Dalal Technologies</a></p>
     </div>
@@ -503,7 +503,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   const lw = document.getElementById('langWord'); let wi = 0;
   if (lw && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => { wi = (wi + 1) % words.length; lw.textContent = words[wi]; }, 1800);
 
-  // Twin Hug mini demonstration
+  // Cubbi Hug mini demonstration
   const send = document.getElementById('sendHug'), flyer = document.getElementById('flyer'), st = document.getElementById('hugStatus');
   let busy = false;
   send.addEventListener('click', () => {

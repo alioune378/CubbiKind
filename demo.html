@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Twin Hug Demo</title>
+<title>Cubbi Hug Demo</title>
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   <div class="row">
     <div>
       <a class="back" href="index.html">← Back to CubbiKind</a>
-      <h1>Twin Hug demo</h1>
+      <h1>Cubbi Hug demo</h1>
       <p>Tap the heart on Awa's Cubbi Moon, send a hug, then answer it from Mame Fatou's Cubbi Sun.</p>
       <span class="demo-tag">Demonstration · simulated until the CubbiKind app launches</span>
     </div>
@@ -174,7 +174,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   }
   function kidPlay() {
     let p = 0;
-    kBody.innerHTML = `<p class="hint">Mame Fatou is reading</p><p class="sub">"Leuk the hare", in Wolof · 1:12</p><div class="wave">${'<i></i>'.repeat(9).replace(/<i>/g, () => `<i style="animation-delay:${(Math.random() * .8).toFixed(2)}s">`)}</div><div class="meter"><b id="m"></b></div><button class="pbtn" id="sendHug">Send a Twin Hug</button>`;
+    kBody.innerHTML = `<p class="hint">Mame Fatou is reading</p><p class="sub">"Leuk the hare", in Wolof · 1:12</p><div class="wave">${'<i></i>'.repeat(9).replace(/<i>/g, () => `<i style="animation-delay:${(Math.random() * .8).toFixed(2)}s">`)}</div><div class="meter"><b id="m"></b></div><button class="pbtn" id="sendHug">Send a Cubbi Hug</button>`;
     stop(); timer = setInterval(() => { p = Math.min(100, p + 2.5); $('m').style.width = p + '%'; if (p >= 100) stop(); }, 100);
     $('sendHug').onclick = kidWait;
   }
