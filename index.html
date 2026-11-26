@@ -22,7 +22,7 @@
    LAYOUT laptop: copy left, large product photo right; phone: headline, photo, copy, buttons */
 :root{color-scheme:light;--white:#fff;--cream:#fff4ef;--coral:#ff7a59;--coralD:#e85d3c;--mint:#7fd8be;--honey:#ffd27a;--plum:#3a1f2b;--soft:#6d5560;--line:#f1dfd7}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--white);color:var(--plum);font:17px/1.65 Nunito,system-ui,sans-serif;overflow-x:clip}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -45,7 +45,8 @@ p{margin:0}
 .fine{font-size:14px;color:var(--soft)}
 /* nav */
 nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:84px}
+nav .logo img{height:70px;width:auto}
 nav .links{display:flex;align-items:center;gap:22px;font-weight:700;font-size:16px}
 nav .links a{text-decoration:none}
 nav .links a:not(.btn):hover{color:var(--coralD)}
@@ -63,9 +64,10 @@ nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .badge{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.9);color:var(--plum);font-size:13px;font-weight:800;padding:5px 12px;border-radius:99px}
 .hero .halo{position:absolute;inset:-6% -4% auto auto;width:38%;aspect-ratio:1;border-radius:50%;background:var(--honey);opacity:.35;z-index:-1;filter:blur(2px)}
 /* meet */
-.meet .head{text-align:center;max-width:720px;margin:0 auto 48px}
+.meet .head{text-align:center;max-width:720px;margin:0 auto 40px}
+.meet>.wrap{max-width:1320px}
 .meet .head .lead{margin:16px auto 0}
-.meet .trio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:center}
+.meet .trio{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.6fr) minmax(0,1.1fr);gap:clamp(16px,2.4vw,32px);align-items:center}
 .twin{text-align:center;align-self:start}
 .twin img{border-radius:32px;aspect-ratio:32/45;object-fit:cover;width:100%;background:var(--cream)}
 .twin h3{margin-top:22px;font-size:30px}
@@ -126,9 +128,11 @@ nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .chips span{background:#fff;border:2px solid var(--line);border-radius:99px;padding:7px 15px;font-weight:800;font-size:15px}
 .chips span:nth-child(3n+1){border-color:var(--mint)}.chips span:nth-child(3n+2){border-color:var(--honey)}.chips span:nth-child(3n){border-color:#ffb39f}
 /* gift */
-.gift .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center}
-.gift figure{margin:0;position:relative}
-.gift figure img{border-radius:32px;width:100%;aspect-ratio:3/2;object-fit:cover}
+.gift{background:var(--cream)}
+.gift .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.giftimg{margin:0;position:relative}
+.giftimg img{width:100%;height:clamp(320px,52vw,720px);object-fit:cover;object-position:50% 60%}
+.gift ul{margin-top:8px!important}
 .gift ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
 .gift li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start}
 .gift li::before{content:"";width:14px;height:14px;margin-top:7px;border-radius:50%;background:var(--mint)}
@@ -155,6 +159,9 @@ input,select{font:16px Nunito,sans-serif;min-height:50px;padding:0 14px;border-r
 .check{display:flex;gap:10px;align-items:flex-start;font-weight:700}
 .check input{width:24px;min-height:24px;height:24px;margin-top:2px;accent-color:var(--coral);flex:none}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.more{border:2px dashed var(--line);border-radius:18px;padding:12px 16px}
+.more summary{cursor:pointer;font-weight:800;color:var(--soft)}
+.morebody{display:grid;gap:14px;margin-top:14px}
 .done{display:none;background:var(--mint);color:var(--plum);border-radius:20px;padding:20px;font-weight:700}
 .done.show{display:grid;gap:10px}
 .hidden{display:none}
@@ -183,7 +190,11 @@ footer .small{margin-top:14px;font-size:14px;opacity:.85}
 .hero .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "img" "c"}
 .hero h1{font-size:40px;margin-bottom:16px}
 .hero .copy{margin-top:18px}
-.hero figure img{border-radius:26px}
+.hero figure{margin-inline:calc(-1 * max(5vw,18px))}
+.hero figure img{border-radius:0;box-shadow:none}
+.hero .halo{display:none}
+nav .logo img{height:62px}
+.gift .grid{grid-template-columns:minmax(0,1fr);gap:8px}
 .hero .cta .btn{flex:1 1 100%}
 footer .wrap{grid-template-columns:minmax(0,1fr)}
 }
@@ -195,7 +206,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
 <body>
 <nav aria-label="Main">
   <div class="wrap">
-    <a href="#top"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64" style="height:54px;width:auto"></a>
+    <a href="#top" class="logo"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64"></a>
     <div class="links">
       <a href="#twins">The twins</a><a href="#how">How it works</a><a href="#twin-hug">Twin Hug</a><a href="#gift">The gift</a><a href="#faq">FAQ</a>
       <a class="btn coral" href="#reserve">Reserve a pair</a>
@@ -335,16 +346,18 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   </div>
 </section>
 
-<section class="band cream gift" id="gift">
-  <div class="wrap grid">
-    <figure class="reveal">
-      <img src="img/gift-box.webp" alt="Cubbi Moon and Cubbi Sun nestled in a kraft gift box with cream tissue and a card reading One Cubbi, two homes, one family" width="1400" height="933" loading="lazy">
-      <span class="badge">Concept visualization</span>
-    </figure>
+<section class="gift" id="gift">
+  <figure class="giftimg">
+    <img src="img/gift-box.webp" alt="Cubbi Moon and Cubbi Sun nestled in a kraft gift box with cream tissue and a card reading One Cubbi, two homes, one family" width="1400" height="933" loading="lazy">
+    <span class="badge">Concept visualization</span>
+  </figure>
+  <div class="wrap grid band">
     <div class="reveal">
       <p class="kicker">The gift</p>
       <h2>Two little gifts. One enormous meaning.</h2>
       <p class="lead" style="margin-top:16px">Every pair is designed to be shared. Open the box together, then send one Cubbi on its journey to someone special.</p>
+    </div>
+    <div class="reveal">
       <ul>
         <li><span>Cubbi Moon and Cubbi Sun, nestled in tissue in a recyclable kraft box made to be re-mailed.</span></li>
         <li><span>A gift card for the Cubbi that travels, and a setup card that takes about two minutes.</span></li>
@@ -389,16 +402,21 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
         <label for="name">Your first name<input id="name" name="name" autocomplete="given-name" required></label>
         <label for="email">Email<input id="email" name="email" type="email" autocomplete="email" required></label>
       </div>
-      <div class="two">
-        <label for="where">Where does the travelling Cubbi go?<input id="where" name="where" placeholder="e.g. Dakar, Senegal"></label>
-        <label for="lang">Language they'll record in<input id="lang" name="language" placeholder="e.g. Wolof, French"></label>
-      </div>
-      <label for="who">Who is the twin for?
-        <select id="who" name="for">
-          <option>A grandparent</option><option>A parent away from home</option><option>A parent in another home</option><option>Another family member</option>
-        </select>
-      </label>
       <label class="check" for="deposit"><input id="deposit" name="deposit" type="checkbox" value="yes" checked> Yes, I'd like the refundable $5 VIP reservation</label>
+      <details class="more">
+        <summary>Tell us about your family (optional)</summary>
+        <div class="morebody">
+          <label for="who">Who is the travelling Cubbi for?
+            <select id="who" name="for">
+              <option value="">Choose one</option><option>A grandparent</option><option>A parent away from home</option><option>A parent in another home</option><option>Another family member</option>
+            </select>
+          </label>
+          <div class="two">
+            <label for="where">Where will it live?<input id="where" name="where" placeholder="e.g. Dakar, Senegal"></label>
+            <label for="lang">Language they'll record in<input id="lang" name="language" placeholder="e.g. Wolof, French"></label>
+          </div>
+        </div>
+      </details>
       <button class="btn coral" type="submit" id="sendBtn">Save my place</button>
       <p class="fine">We'll email you the reservation link. Nothing is charged today.</p>
       <p class="fine" id="err" role="alert"></p>
