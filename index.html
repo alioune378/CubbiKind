@@ -4,282 +4,385 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CubbiKind Twins</title>
-<meta name="description" content="Two matching bears. One stays with your child, one goes to someone they love far away. Tap the heart and hear their voice.">
+<meta name="description" content="No distance is bigger than love. Two little companions, two different homes: Cubbi Moon and Cubbi Sun carry the voices you love.">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/icon.png">
-<meta property="og:image" content="img/logo-primary.png">
+<meta property="og:title" content="CubbiKind Twins: One Cubbi, two homes, one family.">
+<meta property="og:image" content="img/hero-twins.webp">
+<link rel="preload" as="image" href="img/hero-twins.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* VOICE occasion: tender, warm, for parents and grandparents
-   IDEA an airmail parcel between two homes: two bears, two skies, one dotted route
-   PICTURE two bears on two horizons (New York night, Dakar night) joined by a dotted arc with a heart travelling
-   COLOUR coral field, plum ink, mint and honey accents; white sections below
+/* VOICE occasion: tender, premium, a gift brand for families far apart
+   IDEA a keepsake gift book: white pages, warm photographs, one night sky and one morning sky
+   PICTURE the photographed Moon and Sun twins, hugging, as the hero
+   COLOUR white and soft cream lead; coral for action, mint and honey as small accents, plum for ink and the night band
    TYPE Baloo 2 display + Nunito text
-   LAYOUT laptop: title band over a full-width scene; phone: title, scene, form */
-:root{color-scheme:light dark;--bg:light-dark(#fff4ef,#1c1218);--ink:light-dark(#3a1f2b,#f6e9ee);--soft:light-dark(#6d5560,#c9b3bc);--coral:#ff7a59;--coralD:light-dark(#e85d3c,#ff8f72);--mint:#7fd8be;--honey:#ffd27a;--panel:light-dark(#ffffff,#2a1b23);--line:light-dark(#f1d9cf,#45303a)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+   LAYOUT laptop: copy left, large product photo right; phone: headline, photo, copy, buttons */
+:root{color-scheme:light;--white:#fff;--cream:#fff4ef;--coral:#ff7a59;--coralD:#e85d3c;--mint:#7fd8be;--honey:#ffd27a;--plum:#3a1f2b;--soft:#6d5560;--line:#f1dfd7}
 *{box-sizing:border-box;min-width:0}
-html{scroll-padding-top:72px}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Nunito,system-ui,sans-serif;overflow-x:clip}
-img,svg{max-width:100%}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--white);color:var(--plum);font:17px/1.65 Nunito,system-ui,sans-serif;overflow-x:clip}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance}
-h1{font-size:clamp(40px,6vw,64px);font-weight:800}
-h2{font-size:clamp(30px,4vw,44px);font-weight:800}
-h3{font-size:22px;font-weight:700}
+h1{font-size:clamp(42px,6vw,72px);font-weight:800}
+h2{font-size:clamp(32px,4.4vw,52px);font-weight:800}
+h3{font-size:24px;font-weight:700}
 p{margin:0}
-.band{padding-block:clamp(36px,5vw,72px);padding-inline:max(5vw,16px)}
-.wrap{max-width:1180px;margin:0 auto}
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);color:var(--ink);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px max(5vw,16px)}
-.brand{font:800 24px "Baloo 2",sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px}
-nav .links{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-weight:700}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:max(5vw,18px)}
+.band{padding-block:clamp(56px,8vw,112px)}
+.cream{background:var(--cream)}
+.kicker{font:700 17px "Baloo 2",sans-serif;color:var(--coralD);margin-bottom:10px}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--soft);max-width:34em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;border:0;font:800 17px Nunito,sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.btn.coral{background:var(--coral);color:var(--plum);box-shadow:0 10px 24px -12px rgba(232,93,60,.7)}
+.btn.line{background:transparent;color:var(--plum);border:2px solid var(--plum)}
+.btn.light{background:#fff;color:var(--plum)}
+.fine{font-size:14px;color:var(--soft)}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+nav .links{display:flex;align-items:center;gap:22px;font-weight:700;font-size:16px}
 nav .links a{text-decoration:none}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;border:0;font:800 17px Nunito,sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s}
-.btn:active{transform:scale(.97)}
-.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
-.btn.dark{background:#3a1f2b;color:#fff}
-.btn.light{background:#fff;color:#3a1f2b}
-.hero{background:var(--bg);color:var(--ink);padding-bottom:0}
-.hero .tag{font:700 18px "Baloo 2",sans-serif;color:var(--coralD);margin-top:14px}
-.btn.coral{background:var(--coral);color:#3a1f2b}
-.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
-.note{font-size:13px;color:var(--soft);margin-top:10px;font-weight:600}
-.lang{background:var(--bg)}
-.lang .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chips span{background:var(--panel);border:2px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:800}
-.chips span:nth-child(3n+1){border-color:var(--mint)}
-.chips span:nth-child(3n+2){border-color:var(--honey)}
-.chips span:nth-child(3n){border-color:var(--coral)}
-.lang p{color:var(--soft);margin-top:14px}
-.hero .top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 48px;align-items:end}
-.hero p.lead{font-size:20px;max-width:34em;font-weight:600;color:var(--soft)}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.scene{margin-top:28px;border-radius:28px;overflow:hidden;height:clamp(300px,38vw,440px);position:relative}
-.scene svg{position:absolute;inset:0;width:100%;height:100%}
-.place{position:absolute;bottom:14px;font:700 15px Nunito,sans-serif;color:#fff;background:rgba(0,0,0,.28);padding:4px 12px;border-radius:99px}
-.meet .grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
-.meet figure{margin:0;border-radius:24px;overflow:hidden;background:var(--panel);position:relative}
-.meet figure img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
-.meet .big{grid-row:span 2}
-.meet .big img{aspect-ratio:3/2;height:auto}
-.meet figcaption{position:absolute;left:12px;bottom:12px;background:rgba(58,31,43,.78);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:99px}
-.meet .row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
-.meet .intro{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
-.meet .intro p{color:var(--soft);max-width:36em}
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:32px}
-.step{background:var(--panel);border-radius:24px;padding:24px}
-.step svg{width:72px;height:72px;margin-bottom:10px}
-.step .ico{height:72px;width:auto;margin-bottom:10px;display:block}
-.hug .demoBox img{width:100%;max-width:420px;height:auto}
-.step p{color:var(--soft);margin-top:8px}
-.hug{background:#3a1f2b;color:#fff}
-.hug .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
-.hug ol{margin:18px 0 0;padding-left:22px;display:grid;gap:10px}
-.hug .demoBox{background:#4a2a39;border-radius:28px;padding:28px;display:grid;gap:16px;justify-items:start}
-.hug .demoBox p{color:#f3d9e3}
-.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:28px}
-.who div{border-top:4px solid var(--coral);padding-top:14px}
-.who p{color:var(--soft);margin-top:6px;font-size:16px}
-.promise{background:var(--panel)}
-.promise ul{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}
-.promise li{padding-left:34px;position:relative}
-.promise li::before{content:"";position:absolute;left:0;top:4px;width:22px;height:22px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%233a1f2b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
-.reserve .grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
-.price{display:flex;align-items:baseline;gap:12px;margin:18px 0 8px;flex-wrap:wrap}
-.price b{font:800 56px "Baloo 2",sans-serif;color:var(--coralD);white-space:nowrap}
-.price s{color:var(--soft);white-space:nowrap}
-form{background:var(--panel);border-radius:28px;padding:clamp(20px,3vw,32px);display:grid;gap:16px}
-label{font-weight:800;display:grid;gap:6px}
-input,select{font:16px Nunito,sans-serif;min-height:48px;padding:0 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+nav .links a:not(.btn):hover{color:var(--coralD)}
+nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+/* hero */
+.hero{padding-block:clamp(28px,5vw,72px) clamp(48px,6vw,88px);background:linear-gradient(var(--white),var(--cream))}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-areas:"h img" "c img";column-gap:56px;align-items:center}
+.hero h1{grid-area:h;align-self:end}
+.hero .copy{grid-area:c;align-self:start;margin-top:22px}
+.hero .copy .lead{margin-bottom:28px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .tag{margin-top:22px;font:700 18px "Baloo 2",sans-serif;color:var(--coralD)}
+.hero figure{grid-area:img;margin:0;position:relative}
+.hero figure img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:36px;box-shadow:0 40px 80px -48px rgba(58,31,43,.55)}
+.badge{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.9);color:var(--plum);font-size:13px;font-weight:800;padding:5px 12px;border-radius:99px}
+.hero .halo{position:absolute;inset:-6% -4% auto auto;width:38%;aspect-ratio:1;border-radius:50%;background:var(--honey);opacity:.35;z-index:-1;filter:blur(2px)}
+/* meet */
+.meet .head{text-align:center;max-width:720px;margin:0 auto 48px}
+.meet .head .lead{margin:16px auto 0}
+.meet .trio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:center}
+.twin{text-align:center;align-self:start}
+.twin img{border-radius:32px;aspect-ratio:32/45;object-fit:cover;width:100%;background:var(--cream)}
+.twin h3{margin-top:22px;font-size:30px}
+.twin p{color:var(--soft);margin-top:6px}
+.twin .mark{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.join{text-align:center;display:grid;gap:16px;justify-items:center}
+.join img{width:min(180px,60%)}
+.join p{color:var(--soft)}
+.join b{font:800 22px "Baloo 2",sans-serif;color:var(--plum)}
+/* how */
+.how .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.how ol{list-style:none;margin:28px 0 0;padding:0}
+.how li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.how li:last-child{border-bottom:1px solid var(--line)}
+.how li svg{width:56px;height:56px}
+.how li p{color:var(--soft);margin-top:6px}
+.how figure{margin:0}
+.how figure img{border-radius:32px;width:100%;aspect-ratio:1400/505;object-fit:cover}
+.how figcaption{margin-top:12px}
+.how .stack{display:grid;gap:18px}
+.how .stack img.tall{aspect-ratio:4/3;object-position:50% 40%}
+/* twin hug */
+.hug{position:relative;overflow:hidden;color:#fff;background:var(--plum)}
+.sky{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:clamp(380px,44vw,520px)}
+.sky>div{position:relative;display:grid;align-content:end;justify-items:center;padding:28px 16px 30px}
+.night{background:linear-gradient(#20183a,#4a3363)}
+.day{background:linear-gradient(#ffcf9a,#ffe9c9);color:var(--plum)}
+.sky img{width:min(220px,62%);filter:drop-shadow(0 20px 18px rgba(0,0,0,.25))}
+.sky .when{margin-top:12px;font-weight:800;font-size:15px;padding:4px 12px;border-radius:99px;background:rgba(0,0,0,.25)}
+.day .when{background:rgba(255,255,255,.7)}
+.orb{position:absolute;top:28px;width:64px;height:64px;border-radius:50%}
+.night .orb{left:28px;background:#fff4d6;box-shadow:18px -6px 0 0 #2a2048 inset}
+.day .orb{right:28px;background:var(--honey);box-shadow:0 0 0 14px rgba(255,210,122,.35)}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.8}
+.flyer{position:absolute;left:25%;top:44%;width:34px;height:34px;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+.flyer.go{animation:fly 2.4s cubic-bezier(.45,0,.3,1) forwards}
+@keyframes fly{0%{left:25%;top:44%;opacity:1}50%{top:16%}100%{left:75%;top:44%;opacity:1}}
+.hugtext{max-width:760px;margin:0 auto;text-align:center;padding:clamp(40px,6vw,72px) max(5vw,18px)}
+.hugtext .lead{color:#f3d9e3;margin:16px auto 0}
+.hugtext .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.hugtext .status{min-height:28px;margin-top:18px;font-weight:700;color:var(--honey)}
+.demo-tag{display:inline-block;margin-top:14px;font-size:13px;font-weight:800;color:var(--plum);background:var(--mint);padding:4px 12px;border-radius:99px}
+.hugtext ol{text-align:left;max-width:600px;margin:32px auto 0;padding-left:22px;display:grid;gap:10px;color:#f3d9e3}
+/* bedtime */
+.bed{position:relative;min-height:clamp(440px,52vw,640px);display:grid;align-items:end;color:#fff;overflow:hidden}
+.bed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.bed::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,22,30,.82) 0%,rgba(43,22,30,.45) 45%,rgba(43,22,30,0) 75%)}
+.bed .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(36px,6vw,80px)}
+.bed h2{max-width:11em;color:#fff}
+.bed p{max-width:26em;margin-top:16px;font-size:clamp(18px,1.6vw,21px);color:#fbe7dd}
+.bed .badge{left:auto;right:16px;top:16px;bottom:auto;z-index:1}
+/* language */
+.lang .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.lang .lead{margin-top:18px}
+.lang .big{font:800 clamp(34px,5vw,60px)/1.05 "Baloo 2",sans-serif;color:var(--coralD);min-height:1.2em}
+.lang .big span{color:var(--plum)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chips span{background:#fff;border:2px solid var(--line);border-radius:99px;padding:7px 15px;font-weight:800;font-size:15px}
+.chips span:nth-child(3n+1){border-color:var(--mint)}.chips span:nth-child(3n+2){border-color:var(--honey)}.chips span:nth-child(3n){border-color:#ffb39f}
+/* gift */
+.gift .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);align-items:center}
+.gift figure{margin:0;position:relative}
+.gift figure img{border-radius:32px;width:100%;aspect-ratio:3/2;object-fit:cover}
+.gift ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
+.gift li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start}
+.gift li::before{content:"";width:14px;height:14px;margin-top:7px;border-radius:50%;background:var(--mint)}
+.gift li:nth-child(2)::before{background:var(--honey)}.gift li:nth-child(3)::before{background:var(--coral)}
+/* promises */
+.promise .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:36px}
+.promise .grid div{border-top:3px solid var(--mint);padding-top:16px}
+.promise .grid div:nth-child(2){border-color:var(--honey)}.promise .grid div:nth-child(3){border-color:var(--coral)}.promise .grid div:nth-child(4){border-color:var(--plum)}
+.promise p{color:var(--soft);margin-top:8px;font-size:16px}
+/* reserve */
+.reserve .grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(28px,5vw,64px);align-items:start}
+.price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:18px 0 6px}
+.price b{font:800 64px "Baloo 2",sans-serif;color:var(--coralD);line-height:1}
+.price s{color:var(--soft);font-weight:700}
+.path{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:0}
+.path li{display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+.path .dot{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 15px "Baloo 2",sans-serif}
+.path li:nth-child(1) .dot{background:var(--mint)}.path li:nth-child(2) .dot{background:var(--honey)}.path li:nth-child(3) .dot{background:#ffd3c6}
+.path p{color:var(--soft);font-size:16px}
+form{background:#fff;border:1px solid var(--line);border-radius:32px;padding:clamp(22px,3vw,36px);display:grid;gap:16px;box-shadow:0 30px 60px -44px rgba(58,31,43,.45)}
+form h3{font-size:26px}
+label{font-weight:800;display:grid;gap:6px;font-size:16px}
+input,select{font:16px Nunito,sans-serif;min-height:50px;padding:0 14px;border-radius:14px;border:2px solid var(--line);background:#fff;color:var(--plum);width:100%}
 .check{display:flex;gap:10px;align-items:flex-start;font-weight:700}
 .check input{width:24px;min-height:24px;height:24px;margin-top:2px;accent-color:var(--coral);flex:none}
-.small{font-size:14px;color:var(--soft);font-weight:600}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.done{display:none;background:var(--mint);color:#3a1f2b;border-radius:20px;padding:20px;font-weight:700}
+.done{display:none;background:var(--mint);color:var(--plum);border-radius:20px;padding:20px;font-weight:700}
 .done.show{display:grid;gap:10px}
 .hidden{display:none}
-.faq details{border-bottom:2px solid var(--line);padding:16px 0}
-.faq summary{font-weight:800;cursor:pointer;font-size:18px}
+/* faq */
+.faq .wrap{max-width:860px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";font:800 24px "Baloo 2",sans-serif;color:var(--coralD);line-height:1}
+.faq details[open] summary::after{content:"–"}
 .faq details p{margin-top:10px;color:var(--soft)}
-footer{background:#3a1f2b;color:#f3d9e3;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px}
+/* footer */
+footer{background:var(--plum);color:#f3d9e3;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;padding-block:48px}
+footer img{height:60px;width:auto;background:#fff;border-radius:16px;padding:6px 10px}
 footer a{color:#fff;font-weight:800}
-@media(max-width:860px){.lang .grid,.hero .top,.hug .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.meet .grid,.meet .row3{grid-template-columns:minmax(0,1fr)}.meet .big{grid-row:auto}.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:330px}}
-@media(prefers-reduced-motion:reduce){.fly{display:none}}
+footer .small{margin-top:14px;font-size:14px;opacity:.85}
+/* motion */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.js .reveal.in{opacity:1;transform:none}
+.hero h1,.hero .copy,.hero figure{animation:rise 1s ease both}
+.hero .copy{animation-delay:.12s}.hero figure{animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(max-width:900px){nav .links a:not(.btn){display:none}.how .grid,.lang .grid,.gift .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.promise .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.meet .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.join{grid-column:1/-1;order:3}}
+@media(max-width:760px){
+.hero{padding-top:18px}
+.hero .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "img" "c"}
+.hero h1{font-size:40px;margin-bottom:16px}
+.hero .copy{margin-top:18px}
+.hero figure img{border-radius:26px}
+.hero .cta .btn{flex:1 1 100%}
+footer .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){.meet .trio,.promise .grid,.two{grid-template-columns:minmax(0,1fr)}.sky{grid-template-columns:1fr 1fr;min-height:320px}.orb{width:44px;height:44px;top:18px}.night .orb{left:16px}.day .orb{right:16px}.sky .when{font-size:13px}.bed::after{background:linear-gradient(0deg,rgba(43,22,30,.88) 0%,rgba(43,22,30,.5) 50%,rgba(43,22,30,0) 80%)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<nav>
-  <a class="brand" href="#top"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64" style="height:52px;width:auto"></a>
-  <div class="links"><a href="#meet">The twins</a><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn coral" href="#reserve">Reserve a pair</a></div>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="#top"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64" style="height:54px;width:auto"></a>
+    <div class="links">
+      <a href="#twins">The twins</a><a href="#how">How it works</a><a href="#twin-hug">Twin Hug</a><a href="#gift">The gift</a><a href="#faq">FAQ</a>
+      <a class="btn coral" href="#reserve">Reserve a pair</a>
+    </div>
+  </div>
 </nav>
 
-<header class="band hero" id="top">
+<header class="hero" id="top">
   <div class="wrap">
-    <div class="top">
-      <div>
-        <h1>No distance is bigger than love.</h1>
-        <p class="tag">One Cubbi, two homes, one family.</p>
+    <h1>No distance is bigger than love.</h1>
+    <figure>
+      <span class="halo" aria-hidden="true"></span>
+      <img src="img/hero-twins.webp" alt="Cubbi Moon and Cubbi Sun, two coral plush twins hugging, their mint half-hearts joined into one heart" width="1536" height="1024" fetchpriority="high">
+      <span class="badge">Concept visualization</span>
+    </figure>
+    <div class="copy">
+      <p class="lead">Two little companions. Two different homes. The voices you love, always close.</p>
+      <div class="cta">
+        <a class="btn coral" href="#reserve">Bring Love Closer · $49</a>
+        <a class="btn line" href="#twin-hug">Experience Twin Hug</a>
       </div>
-      <div>
-        <p class="lead">Two little companions. Two different homes. The voices you love, always close. One Cubbi stays with your child, its twin goes to someone they love far away, and a tap on its heart plays that loved one's voice.</p>
-        <div class="cta"><a class="btn coral" href="#reserve">Bring love closer</a><a class="btn ghost" href="demo.html">Try the Twin Hug demo</a></div>
-      </div>
+      <p class="tag">One Cubbi, two homes, one family.</p>
     </div>
-    <div class="scene" role="img" aria-label="The Moon twin under a New York night sky and the Sun twin under a Dakar sky, each holding half of a heart, joined by a dotted line with a heart travelling between them">
-      <svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMax slice">
-        <defs>
-          <linearGradient id="skyL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1d4a"/><stop offset="1" stop-color="#5b3a6e"/></linearGradient>
-          <linearGradient id="skyR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e2c4f"/><stop offset="1" stop-color="#8a4a5a"/></linearGradient>
-          <radialGradient id="glow"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
-          <path id="star" d="M0-6L1.6-1.6 6 0 1.6 1.6 0 6-1.6 1.6-6 0-1.6-1.6z" fill="#fff"/>
-        </defs>
-        <rect x="0" y="0" width="600" height="440" fill="url(#skyL)"/>
-        <rect x="600" y="0" width="600" height="440" fill="url(#skyR)"/>
-        <g opacity=".85">
-          <use href="#star" x="90" y="60"/><use href="#star" x="210" y="120" transform="scale(1)"/><use href="#star" x="330" y="50"/><use href="#star" x="480" y="95"/><use href="#star" x="760" y="70"/><use href="#star" x="900" y="130"/><use href="#star" x="1050" y="55"/><use href="#star" x="1140" y="150"/>
-        </g>
-        <circle cx="120" cy="110" r="34" fill="#fff4d6"/><circle cx="135" cy="100" r="30" fill="#3a2a58"/>
-        <g fill="#24183d">
-          <rect x="0" y="250" width="70" height="190"/><rect x="60" y="210" width="60" height="230"/><rect x="115" y="270" width="80" height="170"/><rect x="190" y="180" width="44" height="260"/><rect x="228" y="240" width="90" height="200"/><rect x="310" y="290" width="70" height="150"/><rect x="380" y="230" width="56" height="210"/><rect x="430" y="300" width="170" height="140"/>
-        </g>
-        <g fill="#ffd27a" opacity=".7">
-          <rect x="72" y="230" width="8" height="10"/><rect x="92" y="260" width="8" height="10"/><rect x="200" y="200" width="6" height="9"/><rect x="200" y="230" width="6" height="9"/><rect x="250" y="262" width="8" height="10"/><rect x="392" y="252" width="8" height="10"/><rect x="140" y="292" width="8" height="10"/>
-        </g>
-        <path d="M600 330q90-40 200-26t190-10q120-18 210 0v146H600z" fill="#5a2f3e"/>
-        <g fill="#3d1f2c">
-          <rect x="840" y="250" width="16" height="90"/><path d="M816 250h64l-32-40z"/><circle cx="848" cy="208" r="6"/>
-          <path d="M960 300q20-40 0-80q-10 40 0 80z"/><path d="M955 236q-40-20-60 4q34-6 60 0zM965 236q40-20 60 4q-34-6-60 0zM960 236q-10-40 20-56q-14 26-20 56z"/>
-          <rect x="1040" y="292" width="110" height="60"/><rect x="1060" y="270" width="70" height="26"/>
-        </g>
-        <rect x="0" y="380" width="600" height="60" fill="#1a1230"/>
-        <rect x="600" y="380" width="600" height="60" fill="#2c1520"/>
-        <path id="route" d="M378 300 C 480 80, 715 80, 818 300" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8"/>
-        <path class="fly" d="M0 10c-16-10-22-18-22-25a10 10 0 0 1 22-5a10 10 0 0 1 22 5c0 7-6 15-22 25z" fill="#ff7a59" stroke="#fff" stroke-width="3">
-          <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear"><mpath href="#route"/></animateMotion>
-        </path>
-        <image id="moonT" href="img/moon-twin.png" x="190" y="128" width="216" height="263"/>
-        <image id="sunT" href="img/sun-twin.png" x="796" y="146" width="216" height="246"/>
-      </svg>
-      <span class="place" style="left:16px">New York, 8:00 pm</span>
-      <span class="place" style="right:16px">Dakar, 1:00 am</span>
-    </div>
-    <p class="note">Illustration. See the plush concept below.</p>
   </div>
 </header>
 
-<section class="band meet" id="meet">
+<section class="band meet" id="twins">
   <div class="wrap">
-    <div class="intro">
-      <h2>Meet Moon and Sun</h2>
-      <p>Two soft twins, each holding half of one heart. Hug them together and the moon and the sun make it whole.</p>
+    <div class="head reveal">
+      <p class="kicker">Meet the twins</p>
+      <h2>Half a heart each. One heart together.</h2>
+      <p class="lead">Cubbi Moon and Cubbi Sun are made as a pair. Each holds one half of the same heart, so whenever they meet again, the moon and the sun make it whole.</p>
     </div>
-    <div class="grid">
-      <figure class="big"><img src="img/render-hug.jpg" alt="Moon and Sun plush twins hugging, their half-hearts joined into one full heart" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
-      <figure><img src="img/render-pair.jpg" alt="Moon twin and Sun twin side by side, each holding its half-heart" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
-      <figure><img src="img/render-box.jpg" alt="The twins in a kraft gift box with a card reading One Cubbi, two homes, one family" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
-    </div>
-    <div class="row3">
-      <figure><img src="img/render-bedtime.jpg" alt="The Sun twin beside a sleeping toddler at bedtime" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
-      <div class="step"><h3>About 8 inches of soft</h3><p>Short, velvety coral plush, embroidered faces and no small parts, sized for a toddler's hug.</p></div>
-      <div class="step"><h3>The heart is the key</h3><p>A thin, battery-free tag sits inside each half-heart. Tap it with a phone to hear the voice from the other home.</p></div>
-    </div>
-    <p class="note">Concept renders of the planned design. Final plush samples are in development and may differ.</p>
-  </div>
-</section>
-
-<section class="band" id="how">
-  <div class="wrap">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="step">
-        <img class="ico" src="img/heart.png" alt="" width="96" height="72">
-        <h3>Give one twin away</h3>
-        <p>Keep one bear at home and give or post the other to a grandparent, a parent away from home, or anyone your child misses.</p>
+    <div class="trio">
+      <div class="twin reveal">
+        <img src="img/cubbi-moon.webp" alt="Cubbi Moon, a coral plush with a cream crescent-moon ear, holding the left half of a mint heart with an embroidered moon" width="640" height="900" loading="lazy">
+        <h3><span class="mark" style="background:#fff4d6;border:2px solid #e9d8b8"></span>Cubbi Moon</h3>
+        <p>A little piece of love for someone far away.</p>
       </div>
-      <div class="step">
-        <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36" fill="#dcf5ec"/><rect x="24" y="14" width="24" height="44" rx="5" fill="#3a1f2b"/><rect x="27" y="19" width="18" height="32" rx="2" fill="#7fd8be"/><path d="M30 35h2M34 30v10M38 32v6M42 34v2" stroke="#3a1f2b" stroke-width="2" stroke-linecap="round"/></svg>
-        <h3>They record their voice</h3>
-        <p>They tap their phone on their twin's heart and record a story, a song or a prayer, in any language. No app to install.</p>
+      <div class="join reveal">
+        <img src="img/heart.png" alt="The CubbiKind heart: a moon on the left half, a sun on the right" width="400" height="302" loading="lazy">
+        <b>Moon holds the left half. Sun holds the right.</b>
+        <p>Put them side by side and the stitched halves line up into one full heart, the same heart on every pair.</p>
       </div>
-      <div class="step">
-        <img class="ico" src="img/sun-twin.png" alt="" width="63" height="72">
-        <h3>Bedtime, together</h3>
-        <p>At bedtime, tap the heart of your child's bear and their loved one's voice plays while they hug it. Record a reply to send back.</p>
+      <div class="twin reveal">
+        <img src="img/cubbi-sun.webp" alt="Cubbi Sun, a coral plush with a honey-yellow sun ear, holding the right half of a mint heart with an embroidered sun" width="640" height="900" loading="lazy">
+        <h3><span class="mark" style="background:var(--honey)"></span>Cubbi Sun</h3>
+        <p>A little reminder that someone is always thinking of you.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band hug" id="hug">
+<section class="band cream how" id="how">
   <div class="wrap grid">
-    <div>
-      <h2>Love never sleeps.</h2>
-      <p style="margin-top:12px;color:#f3d9e3;font-size:19px">Even when the world is asleep, a hug can be waiting for you. Twin Hug only works when both Cubbis are touched.</p>
+    <div class="reveal">
+      <p class="kicker">How the magic works</p>
+      <h2>A heart that carries a voice.</h2>
       <ol>
-        <li>Your child taps their bear. Grandma's phone says: "Awa is hugging her bear right now."</li>
-        <li>If grandma taps her twin within a few minutes, the hug connects on both phones, and it's saved to your family's Hug Calendar.</li>
-        <li>Asleep on the other side of the world? The hug waits for her. When she hugs back, your child wakes up to "Grandma hugged you back."</li>
+        <li>
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#dff5ee"/><path d="M28 40c-9-6-12-11-12-15a6 6 0 0 1 12-3a6 6 0 0 1 12 3c0 4-3 9-12 15z" fill="none" stroke="#3a1f2b" stroke-width="2.5"/><path d="M28 22v18" stroke="#3a1f2b" stroke-width="2.5" stroke-dasharray="3 3"/></svg>
+          <div><h3>One stays. One travels.</h3><p>Keep one Cubbi with your child and send the other to someone they love.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff0cc"/><rect x="22" y="14" width="12" height="20" rx="6" fill="none" stroke="#3a1f2b" stroke-width="2.5"/><path d="M17 28a11 11 0 0 0 22 0M28 39v5" fill="none" stroke="#3a1f2b" stroke-width="2.5" stroke-linecap="round"/></svg>
+          <div><h3>Record a little love.</h3><p>Grandparents, parents and loved ones record stories, songs, prayers and everyday messages in their own language.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#ffe1d7"/><rect x="20" y="12" width="16" height="30" rx="4" fill="none" stroke="#3a1f2b" stroke-width="2.5"/><path d="M41 22a8 8 0 0 1 0 12M45 18a14 14 0 0 1 0 20" fill="none" stroke="#3a1f2b" stroke-width="2.5" stroke-linecap="round"/></svg>
+          <div><h3>Bring their voice closer.</h3><p>Touch a compatible smartphone to Cubbi's heart to open and play the recording on the phone. Cubbi itself has no speaker, battery or microphone.</p></div>
+        </li>
       </ol>
     </div>
-    <div class="demoBox">
-      <img src="img/twins.png" alt="The Moon twin and the Sun twin holding their half-hearts toward each other" width="420" height="215">
-      <h3>See it on two phones</h3>
-      <p>Try the clickable demo: New York on one side, Dakar on the other, with grandma awake or asleep.</p>
-      <a class="btn light" href="demo.html">Open the Twin Hug demo</a>
+    <div class="stack reveal">
+      <figure>
+        <img src="img/nfc-tap.webp" alt="A hand touching a smartphone to the joined mint half-hearts of the plush twins" width="1400" height="505" loading="lazy">
+        <figcaption class="fine">The tag sits inside the half-heart. The recording plays from your phone. Concept visualization.</figcaption>
+      </figure>
     </div>
   </div>
+</section>
+
+<section class="hug" id="twin-hug" aria-labelledby="hugTitle">
+  <div class="sky" id="sky">
+    <div class="night stars">
+      <span class="orb" aria-hidden="true"></span>
+      <img src="img/moon-twin.png" alt="Cubbi Moon illustration under a night sky" width="500" height="610" loading="lazy">
+      <span class="when">New York · 2:00 am</span>
+    </div>
+    <div class="day">
+      <span class="orb" aria-hidden="true"></span>
+      <img src="img/sun-twin.png" alt="Cubbi Sun illustration in morning light" width="500" height="569" loading="lazy">
+      <span class="when">Dakar · 7:00 am</span>
+    </div>
+    <svg class="flyer" id="flyer" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 30C6 23 2 17 2 12a7.5 7.5 0 0 1 15-4a7.5 7.5 0 0 1 15 4c0 5-4 11-15 18z" fill="#ff7a59" stroke="#fff" stroke-width="2.5"/></svg>
+  </div>
+  <div class="hugtext">
+    <h2 id="hugTitle">Love never sleeps.</h2>
+    <p class="lead">Even when the world is asleep, a hug can be waiting for you. Twin Hug connects only when both Cubbis are touched. If one home is asleep, the hug waits until morning.</p>
+    <span class="demo-tag">Demonstration · simulated until the CubbiKind app launches</span>
+    <div class="row">
+      <button class="btn coral" id="sendHug" type="button">Send a hug from New York</button>
+      <a class="btn light" href="demo.html">Experience Twin Hug on two phones</a>
+    </div>
+    <p class="status" id="hugStatus" aria-live="polite"></p>
+    <ol>
+      <li>Your child taps their Cubbi. The loved one's phone says: "Awa is hugging her Cubbi right now."</li>
+      <li>If they tap their own Cubbi within a few minutes, the hug connects on both phones and is saved to your family's Hug Calendar.</li>
+      <li>Asleep on the other side of the world? The hug waits. Your child wakes up to "Grandma hugged you back."</li>
+    </ol>
+  </div>
+</section>
+
+<section class="bed" aria-labelledby="bedTitle">
+  <img src="img/bedtime.webp" alt="Cubbi Sun sitting beside a sleeping toddler in warm evening light" width="1536" height="1024" loading="lazy">
+  <div class="wrap reveal">
+    <h2 id="bedTitle">Goodnight, from anywhere in the world.</h2>
+    <p>A familiar voice. A favorite story. A little reminder that love is never far away.</p>
+  </div>
+  <span class="badge">Concept visualization</span>
 </section>
 
 <section class="band lang" id="languages">
   <div class="wrap grid">
-    <div>
-      <h2>Grandma's lullabies, in grandma's language.</h2>
-      <p>Children growing up far from their grandparents often lose their language. With CubbiKind, every story, prayer and lullaby is recorded in the voice and language of the person who loves them, and kept for years.</p>
+    <div class="reveal">
+      <p class="kicker">Heritage and language</p>
+      <h2>Their voice. Their language. Your family's story.</h2>
+      <p class="lead">Children growing up far from their grandparents can lose the language, the songs and the stories that shaped their family. With Cubbi, a grandmother's lullaby, a grandfather's proverb and a bedtime prayer stay in the voice and language they were meant to be heard in.</p>
     </div>
-    <div class="chips" aria-label="Examples of languages families can record in">
-      <span>Wolof</span><span>Arabic</span><span>Spanish</span><span>Somali</span><span>Tagalog</span><span>French</span><span>Yoruba</span><span>Haitian Creole</span><span>Portuguese</span><span>Hindi</span><span>Vietnamese</span><span>Any language</span>
+    <div class="reveal">
+      <p class="big" aria-live="off">Recorded in <span id="langWord">Wolof</span></p>
+      <div class="chips" aria-label="Examples of languages families record in">
+        <span>Wolof</span><span>Arabic</span><span>Spanish</span><span>Somali</span><span>Tagalog</span><span>French</span><span>Yoruba</span><span>Haitian Creole</span><span>Portuguese</span><span>Hindi</span><span>Vietnamese</span><span>Amharic</span>
+      </div>
+      <p class="fine" style="margin-top:16px">Every language is welcome. If you can say it or sing it, Cubbi can carry it.</p>
     </div>
   </div>
 </section>
 
-<section class="band" id="who">
-  <div class="wrap">
-    <h2>For every family that lives in more than one place</h2>
-    <div class="who">
-      <div><h3>Grandparents abroad</h3><p>Keep their voice, their language and their bedtime stories in your child's arms.</p></div>
-      <div><h3>Military families</h3><p>A deployed parent stays part of bedtime, wherever they are posted.</p></div>
-      <div><h3>Two-home children</h3><p>Your child carries the other parent's voice between homes.</p></div>
-      <div><h3>Anyone far away</h3><p>Aunts, godparents, big brothers at college. Add an extra twin for each.</p></div>
+<section class="band cream gift" id="gift">
+  <div class="wrap grid">
+    <figure class="reveal">
+      <img src="img/gift-box.webp" alt="Cubbi Moon and Cubbi Sun nestled in a kraft gift box with cream tissue and a card reading One Cubbi, two homes, one family" width="1400" height="933" loading="lazy">
+      <span class="badge">Concept visualization</span>
+    </figure>
+    <div class="reveal">
+      <p class="kicker">The gift</p>
+      <h2>Two little gifts. One enormous meaning.</h2>
+      <p class="lead" style="margin-top:16px">Every pair is designed to be shared. Open the box together, then send one Cubbi on its journey to someone special.</p>
+      <ul>
+        <li><span>Cubbi Moon and Cubbi Sun, nestled in tissue in a recyclable kraft box made to be re-mailed.</span></li>
+        <li><span>A gift card for the Cubbi that travels, and a setup card that takes about two minutes.</span></li>
+        <li><span>A private family page where every recording and every hug is kept.</span></li>
+      </ul>
+      <p class="fine" style="margin-top:18px">Planned contents. Final packaging may differ.</p>
     </div>
   </div>
 </section>
 
 <section class="band promise" id="promise">
   <div class="wrap">
-    <h2>Our promises to parents</h2>
-    <ul>
-      <li>No batteries, cameras or microphones inside. The tag in its heart is thin and battery-free; the voice plays from your phone.</li>
-      <li>Designed with soft organic cotton, recycled fill and embroidered eyes. Every production batch will be tested by an independent, CPSC-accepted lab before anything ships.</li>
-      <li>Adults run the account. You decide who joins your family and what gets recorded.</li>
-      <li>No ads, no selling data, and no AI training on your family's voices.</li>
-      <li>Your recordings are yours. Download them any time, and if CubbiKind ever closes, every family gets time and a simple way to keep them.</li>
-    </ul>
+    <h2 class="reveal">Our promises to parents</h2>
+    <div class="grid reveal">
+      <div><h3>Parents in charge</h3><p>Adults run the account. You decide who joins your family and what gets recorded.</p></div>
+      <div><h3>Simple inside</h3><p>No batteries, cameras or microphones in the plush. The tag in its heart is thin and battery-free.</p></div>
+      <div><h3>Never sold</h3><p>No ads, no selling data, and no AI training on your family's voices.</p></div>
+      <div><h3>Yours to keep</h3><p>Download your recordings any time. If CubbiKind ever closes, every family gets advance notice and a way to keep them.</p></div>
+    </div>
+    <p class="fine reveal" style="margin-top:28px">Before anything ships, each production batch will be tested by an independent, CPSC-accepted lab.</p>
   </div>
 </section>
 
-<section class="band reserve" id="reserve">
+<section class="band cream reserve" id="reserve">
   <div class="wrap grid">
-    <div>
-      <h2>Reserve your twin pair</h2>
+    <div class="reveal">
+      <p class="kicker">Reserve your pair</p>
+      <h2>Be first to bring love closer.</h2>
       <div class="price"><b>$49</b><s>$64 planned retail</s></div>
-      <p>A $5 VIP reservation guarantees you the $49 early-bird price (planned retail $64) when our crowdfunding campaign opens. Reservers hear first, before it goes public. Your $5 is refundable at any time, and refunded once you back the campaign.</p>
-      <p class="small" style="margin-top:14px">We'll only make the first bears once enough families reserve. You'll hear from us before anything is charged beyond the deposit.</p>
+      <p class="lead">Early-bird price for one Cubbi Moon and Cubbi Sun pair.</p>
+      <ol class="path">
+        <li><span class="dot">Now</span><div><h3>Reserve, don't buy</h3><p>Join the list for free, or add a refundable $5 VIP reservation to guarantee the $49 early-bird price. A reservation is not a purchase.</p></div></li>
+        <li><span class="dot">Next</span><div><h3>Order when the campaign opens</h3><p>Reservers get the link first. You choose then whether to order your pair at $49. Your $5 is refunded once you do, or any time you ask.</p></div></li>
+        <li><span class="dot">Then</span><div><h3>Made, tested, shipped</h3><p>Pairs are produced and lab-tested after the campaign. Cubbi is not in stock yet; physical samples are in development.</p></div></li>
+      </ol>
     </div>
-    <form id="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+    <form id="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate class="reveal">
+      <h3>Save your place</h3>
       <input type="hidden" name="form-name" value="waitlist">
       <p class="hidden"><label>Leave empty <input name="bot-field"></label></p>
       <div class="two">
@@ -287,7 +390,7 @@ footer a{color:#fff;font-weight:800}
         <label for="email">Email<input id="email" name="email" type="email" autocomplete="email" required></label>
       </div>
       <div class="two">
-        <label for="where">Where does the far-away twin live?<input id="where" name="where" placeholder="e.g. Dakar, Senegal"></label>
+        <label for="where">Where does the travelling Cubbi go?<input id="where" name="where" placeholder="e.g. Dakar, Senegal"></label>
         <label for="lang">Language they'll record in<input id="lang" name="language" placeholder="e.g. Wolof, French"></label>
       </div>
       <label for="who">Who is the twin for?
@@ -295,12 +398,13 @@ footer a{color:#fff;font-weight:800}
           <option>A grandparent</option><option>A parent away from home</option><option>A parent in another home</option><option>Another family member</option>
         </select>
       </label>
-      <label class="check" for="deposit"><input id="deposit" name="deposit" type="checkbox" value="yes" checked> Yes, I want to reserve with a refundable $5 deposit</label>
-      <button class="btn dark" type="submit" id="sendBtn">Join and reserve</button>
-      <p class="small" id="err" role="alert"></p>
+      <label class="check" for="deposit"><input id="deposit" name="deposit" type="checkbox" value="yes" checked> Yes, I'd like the refundable $5 VIP reservation</label>
+      <button class="btn coral" type="submit" id="sendBtn">Save my place</button>
+      <p class="fine">We'll email you the reservation link. Nothing is charged today.</p>
+      <p class="fine" id="err" role="alert"></p>
       <div class="done" id="done" aria-live="polite">
         <span id="doneMsg">You're on the list. Thank you!</span>
-        <a class="btn dark hidden" id="payLink" href="#">Pay my $5 deposit</a>
+        <a class="btn coral hidden" id="payLink" href="#">Complete my $5 reservation</a>
       </div>
     </form>
   </div>
@@ -309,38 +413,64 @@ footer a{color:#fff;font-weight:800}
 <section class="band faq" id="faq">
   <div class="wrap">
     <h2>Questions</h2>
-    <details><summary>Does the voice come out of the bear?</summary><p>The voice plays from the phone you tap on the bear's heart, so the bear stays soft, washable and safe from birth.</p></details>
-    <details><summary>What phones work?</summary><p>Most iPhones and Android phones from recent years can read the tag in the heart. Every bear also has a printed code on its label for older phones.</p></details>
-    <details><summary>Does grandma need an app?</summary><p>No. She taps her bear with her phone and her family page opens in the browser. Messages and invites can come by WhatsApp or text.</p></details>
-    <details><summary>When will the bears ship?</summary><p>We're finishing samples and testing with our first families. Reservers will get the date first, before we take any full payment.</p></details>
-    <details><summary>How does the $5 reservation work?</summary><p>It saves your place and your $49 early-bird price. When our crowdfunding campaign opens, reservers get the link first. Once you back the campaign, we refund your $5. Changed your mind? Reply to any of our emails and we refund it right away.</p></details>
-    <details><summary>Are these the real toys?</summary><p>Not yet. The photos are concept renders of the planned design, and the drawings are illustrations. We are making the first plush samples now and will show real photos before the campaign opens.</p></details>
+    <div style="margin-top:20px">
+    <details><summary>Does the voice come out of Cubbi?</summary><p>No. The voice plays from the phone you touch to Cubbi's heart, so Cubbi stays soft and simple, with no speaker, battery or microphone inside.</p></details>
+    <details><summary>What phones work?</summary><p>Most recent iPhones and Android phones can read the tag in the heart. Every Cubbi will also have a printed code on its label for older phones.</p></details>
+    <details><summary>Does grandma need an app?</summary><p>No. She touches her phone to her Cubbi and her family page opens in the browser. Invites and new messages can arrive by WhatsApp or text.</p></details>
+    <details><summary>How does the $5 reservation work?</summary><p>It saves your place and your $49 early-bird price. When our crowdfunding campaign opens, reservers get the link first. Once you order, we refund your $5. Changed your mind? Reply to any of our emails and we refund it right away.</p></details>
+    <details><summary>When will Cubbi ship?</summary><p>We're making the first samples and testing with our first families. Reservers will get the date first, before any order is taken.</p></details>
+    <details><summary>Are these photos of the real toys?</summary><p>Not yet. The photographs are concept visualizations of the planned design, and the drawings are illustrations. Physical samples are in development, and we'll share real photos before the campaign opens.</p></details>
+    <details><summary>Is Twin Hug working today?</summary><p>Twin Hug on this site is a demonstration. The real feature will arrive with the CubbiKind app, and we'll share it with our first families before launch.</p></details>
     <details><summary>What happens to our recordings if CubbiKind closes?</summary><p>They stay yours. You can download every recording at any time, and if we ever shut down, every family will get advance notice and a simple way to keep them.</p></details>
+    </div>
   </div>
 </section>
 
-<footer class="band">
-  <span>© 2026 CubbiKind. One Cubbi, two homes, one family.</span>
-  <span>Designed &amp; Developed by <a href="https://dalaltechnologies.com/en/">Dalal Technologies</a></span>
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64">
+      <p style="margin-top:16px;font:700 19px 'Baloo 2',sans-serif;color:#fff">One Cubbi, two homes, one family.</p>
+      <p class="small">Product photographs are concept visualizations. Physical samples are in development and final production details may vary. Twin Hug on this site is a demonstration.</p>
+    </div>
+    <div>
+      <p><a href="#twins">The twins</a> · <a href="#how">How it works</a> · <a href="demo.html">Twin Hug demo</a> · <a href="#reserve">Reserve</a></p>
+      <p class="small">© 2026 CubbiKind.</p>
+      <p class="small">Designed &amp; Developed by <a href="https://dalaltechnologies.com/en/">Dalal Technologies</a></p>
+    </div>
+  </div>
 </footer>
 
 <script>
 {
+  // stars in the night sky
+  const night = document.querySelector('.night');
+  if (night) { let s = 7; const r = () => (s = s * 16807 % 2147483647) / 2147483647; night.insertAdjacentHTML('beforeend', Array.from({ length: 26 }, () => `<i style="left:${(r() * 92 + 4).toFixed(1)}%;top:${(r() * 55 + 4).toFixed(1)}%;opacity:${(.4 + r() * .6).toFixed(2)}"></i>`).join('')); }
 
-  // keep both twins fully visible at any screen width
-  const svg = document.querySelector('.scene svg'), moon = document.getElementById('moonT'), sun = document.getElementById('sunT'), route = document.getElementById('route');
-  const place = () => {
-    const r = svg.getBoundingClientRect(); if (!r.width) return;
-    const vw = Math.min(1200, 440 * r.width / r.height), left = 600 - vw / 2;
-    const w = Math.min(216, vw * 0.31), mh = w * 263 / 216, sh = w * 246 / 216, pad = vw * 0.05;
-    const mx = Math.max(190, left + pad), sx = Math.min(796, left + vw - pad - w);
-    moon.setAttribute('x', mx); moon.setAttribute('width', w); moon.setAttribute('height', mh); moon.setAttribute('y', 391 - mh);
-    sun.setAttribute('x', sx); sun.setAttribute('width', w); sun.setAttribute('height', sh); sun.setAttribute('y', 392 - sh);
-    const ax = mx + w * .87, ay = 391 - mh * .3, bx = sx + w * .13, by = 392 - sh * .3, top = Math.min(ay, by) - (bx - ax) * .45;
-    route.setAttribute('d', `M${ax} ${ay} C ${ax + (bx - ax) * .2} ${top}, ${bx - (bx - ax) * .2} ${top}, ${bx} ${by}`);
-  };
-  const ro = new ResizeObserver(place); ro.observe(svg); place();
-  const RESERVE_URL = ""; // paste your Stripe Payment Link for the $5 deposit here
+  // reveal on scroll
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add('in'));
+
+  // rotating language word
+  const words = ['Wolof', 'Arabic', 'Spanish', 'Somali', 'Tagalog', 'French', 'Yoruba', 'Haitian Creole', 'Hindi', 'your language'];
+  const lw = document.getElementById('langWord'); let wi = 0;
+  if (lw && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => { wi = (wi + 1) % words.length; lw.textContent = words[wi]; }, 1800);
+
+  // Twin Hug mini demonstration
+  const send = document.getElementById('sendHug'), flyer = document.getElementById('flyer'), st = document.getElementById('hugStatus');
+  let busy = false;
+  send.addEventListener('click', () => {
+    if (busy) return; busy = true;
+    st.textContent = 'Hug sent from New York. It is 7:00 am in Dakar…';
+    flyer.classList.remove('go'); void flyer.getBoundingClientRect(); flyer.classList.add('go');
+    setTimeout(() => { st.textContent = 'Mame Fatou touched her Cubbi Sun: hug connected. A heart was added to the Hug Calendar.'; busy = false; }, 2500);
+  });
+
+  // reservation form
+  const RESERVE_URL = ""; // add the Stripe Payment Link only after payments and refunds are set up and tested
   const form = document.getElementById('waitlist');
   const err = document.getElementById('err');
   const done = document.getElementById('done');
@@ -359,9 +489,10 @@ footer a{color:#fff;font-weight:800}
       } catch (x) { err.textContent = 'Something went wrong. Please try again in a minute.'; return; }
     }
     const wantsDeposit = form.deposit.checked;
-    document.getElementById('doneMsg').textContent = (live ? '' : 'Preview only, nothing was sent. ') + (wantsDeposit ? 'Thank you, ' + name + '! One last step to lock your $49 early-bird price:' : 'Thank you, ' + name + "! You're on the list.");
+    const msg = document.getElementById('doneMsg');
+    msg.textContent = (live ? '' : 'Preview only, nothing was sent. ') + 'Thank you, ' + name + "! Your place is saved.";
     if (wantsDeposit && RESERVE_URL) { pay.href = RESERVE_URL; pay.classList.remove('hidden'); }
-    else if (wantsDeposit) { pay.classList.add('hidden'); document.getElementById('doneMsg').textContent += " We'll email you the deposit link shortly."; }
+    else if (wantsDeposit) { pay.classList.add('hidden'); msg.textContent += " We'll email you the $5 VIP reservation link soon."; }
     done.classList.add('show');
     document.getElementById('sendBtn').disabled = true;
   });
