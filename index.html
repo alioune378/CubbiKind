@@ -63,6 +63,27 @@ nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .hero figure img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:36px;box-shadow:0 40px 80px -48px rgba(58,31,43,.55)}
 .badge{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.9);color:var(--plum);font-size:13px;font-weight:800;padding:5px 12px;border-radius:99px}
 .hero .halo{position:absolute;inset:-6% -4% auto auto;width:38%;aspect-ratio:1;border-radius:50%;background:var(--honey);opacity:.35;z-index:-1;filter:blur(2px)}
+.slogan{display:block;font-size:clamp(17px,1.6vw,20px);font-weight:700;color:var(--coralD);letter-spacing:0;margin-bottom:12px}
+.hero .lead b{color:var(--plum);font-weight:700}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.steps{padding-top:clamp(40px,6vw,80px)}
+.three{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,40px);text-align:center}
+.three .pic{aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:var(--cream);display:grid;place-items:center;margin-bottom:18px}
+.three .pic img{width:100%;height:100%;object-fit:cover}
+.three .pic.icon svg{width:46%;height:auto}
+.three h3{font-size:clamp(30px,3vw,40px);font-weight:800}
+.three p{font-size:19px;color:var(--soft);margin-top:4px}
+.center{text-align:center;margin-top:22px}
+.film{margin:clamp(36px,5vw,64px) auto 0;max-width:900px}
+.film .screen{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:16/9;background:var(--plum)}
+.film video{width:100%;height:100%;object-fit:cover}
+.soon{position:absolute;inset:0}
+.soon img{width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
+.soonText{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:8px;text-align:center;color:#fff;padding:20px}
+.soonText b{font:800 clamp(22px,3vw,32px) "Baloo 2",sans-serif}
+.soonText span:last-child{max-width:30em;color:#fbe7dd}
+.play{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--plum);display:grid;place-items:center;font-size:22px;padding-left:4px}
+.film.flash .screen{box-shadow:0 0 0 4px var(--mint)}
 /* meet */
 .meet .head{text-align:center;max-width:720px;margin:0 auto 40px}
 .meet>.wrap{max-width:1320px}
@@ -195,10 +216,10 @@ footer .small{margin-top:14px;font-size:14px;opacity:.85}
 .hero .halo{display:none}
 nav .logo img{height:62px}
 .gift .grid{grid-template-columns:minmax(0,1fr);gap:8px}
-.hero .cta .btn{flex:1 1 100%}
+.hero .cta .btn{flex:1 1 100%;padding:0 14px;font-size:16px}
 footer .wrap{grid-template-columns:minmax(0,1fr)}
 }
-@media(max-width:560px){.meet .trio,.promise .grid,.two{grid-template-columns:minmax(0,1fr)}.sky{grid-template-columns:1fr 1fr;min-height:320px}.orb{width:44px;height:44px;top:18px}.night .orb{left:16px}.day .orb{right:16px}.sky .when{font-size:13px}.bed::after{background:linear-gradient(0deg,rgba(43,22,30,.88) 0%,rgba(43,22,30,.5) 50%,rgba(43,22,30,0) 80%)}}
+@media(max-width:560px){.three{grid-template-columns:minmax(0,1fr)}.three .pic{aspect-ratio:16/9}.meet .trio,.promise .grid,.two{grid-template-columns:minmax(0,1fr)}.sky{grid-template-columns:1fr 1fr;min-height:320px}.orb{width:44px;height:44px;top:18px}.night .orb{left:16px}.day .orb{right:16px}.sky .when{font-size:13px}.bed::after{background:linear-gradient(0deg,rgba(43,22,30,.88) 0%,rgba(43,22,30,.5) 50%,rgba(43,22,30,0) 80%)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -208,7 +229,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   <div class="wrap">
     <a href="#top" class="logo"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64"></a>
     <div class="links">
-      <a href="#twins">The twins</a><a href="#how">How it works</a><a href="#twin-hug">Twin Hug</a><a href="#gift">The gift</a><a href="#faq">FAQ</a>
+      <a href="#how">How it works</a><a href="#twins">The twins</a><a href="#twin-hug">Twin Hug</a><a href="#gift">The gift</a><a href="#faq">FAQ</a>
       <a class="btn coral" href="#reserve">Reserve a pair</a>
     </div>
   </div>
@@ -216,22 +237,52 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
 
 <header class="hero" id="top">
   <div class="wrap">
-    <h1>No distance is bigger than love.</h1>
+    <h1><span class="slogan">No distance is bigger than love.</span>Two bears. Two homes. Always connected.</h1>
     <figure>
       <span class="halo" aria-hidden="true"></span>
       <img src="img/hero-twins.webp" alt="Cubbi Moon and Cubbi Sun, two coral plush twins hugging, their mint half-hearts joined into one heart" width="1536" height="1024" fetchpriority="high">
       <span class="badge">Concept visualization</span>
     </figure>
     <div class="copy">
-      <p class="lead">Two little companions. Two different homes. The voices you love, always close.</p>
+      <p class="lead"><b>Keep one bear. Send the other to someone you love. Tap its heart with your phone to hear their voice.</b></p>
       <div class="cta">
-        <a class="btn coral" href="#reserve">Bring Love Closer · $49</a>
-        <a class="btn line" href="#twin-hug">Experience Twin Hug</a>
+        <a class="btn coral" href="#reserve">Reserve your twins · $49 launch price</a>
+        <a class="btn line" href="#film" id="filmBtn">▶ See how it works · 15 seconds</a>
       </div>
       <p class="tag">One Cubbi, two homes, one family.</p>
     </div>
   </div>
 </header>
+
+<section class="band steps" id="how" aria-labelledby="stepsTitle">
+  <div class="wrap">
+    <h2 id="stepsTitle" class="vh">How it works</h2>
+    <ol class="three">
+      <li class="reveal">
+        <div class="pic"><img src="img/gift-box.webp" alt="Cubbi Moon and Cubbi Sun together in their gift box" width="1400" height="933" loading="lazy"></div>
+        <h3>Share.</h3><p>One for you. One for someone you love.</p>
+      </li>
+      <li class="reveal">
+        <div class="pic icon"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="#fff0cc"/><rect x="44" y="22" width="32" height="52" rx="16" fill="#ff7a59"/><path d="M32 58a28 28 0 0 0 56 0M60 86v14M46 100h28" fill="none" stroke="#3a1f2b" stroke-width="5" stroke-linecap="round"/><path d="M92 34q8 8 0 16M100 28q14 14 0 28" fill="none" stroke="#3a1f2b" stroke-width="4" stroke-linecap="round"/></svg></div>
+        <h3>Record.</h3><p>A message, a story or a lullaby.</p>
+      </li>
+      <li class="reveal">
+        <div class="pic"><img src="img/nfc-tap.webp" alt="A phone touching the heart of the Cubbi twins" width="1400" height="505" loading="lazy" style="object-position:30% 50%"></div>
+        <h3>Connect.</h3><p>Tap the heart. Hear their voice.</p>
+      </li>
+    </ol>
+    <p class="fine center">The voice plays from your phone. Cubbi stays soft and simple, with nothing to charge.</p>
+    <figure class="film reveal" id="film">
+      <div class="screen">
+        <video id="filmVideo" playsinline controls preload="none" poster="img/hero-twins.webp" hidden></video>
+        <div class="soon" id="filmSoon">
+          <img src="img/hero-twins.webp" alt="" width="1536" height="1024" loading="lazy">
+          <div class="soonText"><span class="play" aria-hidden="true">▶</span><b>Our 15-second film is coming soon.</b><span>Grandma records. A phone touches Cubbi's heart. Her voice fills the room.</span></div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
 
 <section class="band meet" id="twins">
   <div class="wrap">
@@ -260,34 +311,6 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   </div>
 </section>
 
-<section class="band cream how" id="how">
-  <div class="wrap grid">
-    <div class="reveal">
-      <p class="kicker">How the magic works</p>
-      <h2>A heart that carries a voice.</h2>
-      <ol>
-        <li>
-          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#dff5ee"/><path d="M28 40c-9-6-12-11-12-15a6 6 0 0 1 12-3a6 6 0 0 1 12 3c0 4-3 9-12 15z" fill="none" stroke="#3a1f2b" stroke-width="2.5"/><path d="M28 22v18" stroke="#3a1f2b" stroke-width="2.5" stroke-dasharray="3 3"/></svg>
-          <div><h3>One stays. One travels.</h3><p>Keep one Cubbi with your child and send the other to someone they love.</p></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#fff0cc"/><rect x="22" y="14" width="12" height="20" rx="6" fill="none" stroke="#3a1f2b" stroke-width="2.5"/><path d="M17 28a11 11 0 0 0 22 0M28 39v5" fill="none" stroke="#3a1f2b" stroke-width="2.5" stroke-linecap="round"/></svg>
-          <div><h3>Record a little love.</h3><p>Grandparents, parents and loved ones record stories, songs, prayers and everyday messages in their own language.</p></div>
-        </li>
-        <li>
-          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#ffe1d7"/><rect x="20" y="12" width="16" height="30" rx="4" fill="none" stroke="#3a1f2b" stroke-width="2.5"/><path d="M41 22a8 8 0 0 1 0 12M45 18a14 14 0 0 1 0 20" fill="none" stroke="#3a1f2b" stroke-width="2.5" stroke-linecap="round"/></svg>
-          <div><h3>Bring their voice closer.</h3><p>Touch a compatible smartphone to Cubbi's heart to open and play the recording on the phone. Cubbi itself has no speaker, battery or microphone.</p></div>
-        </li>
-      </ol>
-    </div>
-    <div class="stack reveal">
-      <figure>
-        <img src="img/nfc-tap.webp" alt="A hand touching a smartphone to the joined mint half-hearts of the plush twins" width="1400" height="505" loading="lazy">
-        <figcaption class="fine">The tag sits inside the half-heart. The recording plays from your phone. Concept visualization.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
 
 <section class="hug" id="twin-hug" aria-labelledby="hugTitle">
   <div class="sky" id="sky">
@@ -485,6 +508,16 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
     st.textContent = 'Hug sent from New York. It is 7:00 am in Dakar…';
     flyer.classList.remove('go'); void flyer.getBoundingClientRect(); flyer.classList.add('go');
     setTimeout(() => { st.textContent = 'Mame Fatou touched her Cubbi Sun: hug connected. A heart was added to the Hug Calendar.'; busy = false; }, 2500);
+  });
+
+
+  // product film: set FILM_URL when the commercial is ready
+  const FILM_URL = "";
+  const fv = document.getElementById('filmVideo'), soon = document.getElementById('filmSoon'), film = document.getElementById('film');
+  if (FILM_URL) { fv.src = FILM_URL; fv.hidden = false; soon.hidden = true; }
+  document.getElementById('filmBtn').addEventListener('click', () => {
+    if (FILM_URL) { setTimeout(() => fv.play().catch(() => {}), 500); }
+    else { film.classList.add('flash'); setTimeout(() => film.classList.remove('flash'), 1600); }
   });
 
   // reservation form
