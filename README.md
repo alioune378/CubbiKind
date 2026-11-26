@@ -8,3 +8,5 @@ Waitlist site and Twin Hug demo for CubbiKind Twins: one bear, two homes, one fa
 Set the Stripe Payment Link in `RESERVE_URL` at the bottom of `index.html`.
 
 Designed & Developed by Dalal Technologies.
+
+Live: https://cubbikinddemo.netlify.app
