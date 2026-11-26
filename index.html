@@ -60,6 +60,15 @@ nav .links a{text-decoration:none}
 .scene{margin-top:28px;border-radius:28px;overflow:hidden;height:clamp(300px,38vw,440px);position:relative}
 .scene svg{position:absolute;inset:0;width:100%;height:100%}
 .place{position:absolute;bottom:14px;font:700 15px Nunito,sans-serif;color:#fff;background:rgba(0,0,0,.28);padding:4px 12px;border-radius:99px}
+.meet .grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
+.meet figure{margin:0;border-radius:24px;overflow:hidden;background:var(--panel);position:relative}
+.meet figure img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+.meet .big{grid-row:span 2}
+.meet .big img{aspect-ratio:3/2;height:auto}
+.meet figcaption{position:absolute;left:12px;bottom:12px;background:rgba(58,31,43,.78);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:99px}
+.meet .row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
+.meet .intro{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.meet .intro p{color:var(--soft);max-width:36em}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:32px}
 .step{background:var(--panel);border-radius:24px;padding:24px}
 .step svg{width:72px;height:72px;margin-bottom:10px}
@@ -98,14 +107,14 @@ input,select{font:16px Nunito,sans-serif;min-height:48px;padding:0 14px;border-r
 footer{background:#3a1f2b;color:#f3d9e3;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px}
 footer a{color:#fff;font-weight:800}
 @media(max-width:860px){.lang .grid,.hero .top,.hug .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:330px}}
+@media(max-width:600px){.meet .grid,.meet .row3{grid-template-columns:minmax(0,1fr)}.meet .big{grid-row:auto}.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:330px}}
 @media(prefers-reduced-motion:reduce){.fly{display:none}}
 </style>
 </head>
 <body>
 <nav>
   <a class="brand" href="#top"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64" style="height:52px;width:auto"></a>
-  <div class="links"><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn coral" href="#reserve">Reserve a pair</a></div>
+  <div class="links"><a href="#meet">The twins</a><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn coral" href="#reserve">Reserve a pair</a></div>
 </nav>
 
 <header class="band hero" id="top">
@@ -158,9 +167,29 @@ footer a{color:#fff;font-weight:800}
       <span class="place" style="left:16px">New York, 8:00 pm</span>
       <span class="place" style="right:16px">Dakar, 1:00 am</span>
     </div>
-    <p class="note">Illustrations of Cubbi. Plush samples are in development.</p>
+    <p class="note">Illustration. See the plush concept below.</p>
   </div>
 </header>
+
+<section class="band meet" id="meet">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Meet Moon and Sun</h2>
+      <p>Two soft twins, each holding half of one heart. Hug them together and the moon and the sun make it whole.</p>
+    </div>
+    <div class="grid">
+      <figure class="big"><img src="img/render-hug.jpg" alt="Moon and Sun plush twins hugging, their half-hearts joined into one full heart" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
+      <figure><img src="img/render-pair.jpg" alt="Moon twin and Sun twin side by side, each holding its half-heart" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
+      <figure><img src="img/render-box.jpg" alt="The twins in a kraft gift box with a card reading One Cubbi, two homes, one family" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
+    </div>
+    <div class="row3">
+      <figure><img src="img/render-bedtime.jpg" alt="The Sun twin beside a sleeping toddler at bedtime" width="1400" height="933" loading="lazy"><figcaption>Concept render</figcaption></figure>
+      <div class="step"><h3>About 8 inches of soft</h3><p>Short, velvety coral plush, embroidered faces and no small parts, sized for a toddler's hug.</p></div>
+      <div class="step"><h3>The heart is the key</h3><p>A thin, battery-free tag sits inside each half-heart. Tap it with a phone to hear the voice from the other home.</p></div>
+    </div>
+    <p class="note">Concept renders of the planned design. Final plush samples are in development and may differ.</p>
+  </div>
+</section>
 
 <section class="band" id="how">
   <div class="wrap">
@@ -285,7 +314,7 @@ footer a{color:#fff;font-weight:800}
     <details><summary>Does grandma need an app?</summary><p>No. She taps her bear with her phone and her family page opens in the browser. Messages and invites can come by WhatsApp or text.</p></details>
     <details><summary>When will the bears ship?</summary><p>We're finishing samples and testing with our first families. Reservers will get the date first, before we take any full payment.</p></details>
     <details><summary>How does the $5 reservation work?</summary><p>It saves your place and your $49 early-bird price. When our crowdfunding campaign opens, reservers get the link first. Once you back the campaign, we refund your $5. Changed your mind? Reply to any of our emails and we refund it right away.</p></details>
-    <details><summary>Are these the real toys?</summary><p>Not yet. The pictures on this page are illustrations of Cubbi. We are making the first plush samples now and will show real photos before the campaign opens.</p></details>
+    <details><summary>Are these the real toys?</summary><p>Not yet. The photos are concept renders of the planned design, and the drawings are illustrations. We are making the first plush samples now and will show real photos before the campaign opens.</p></details>
     <details><summary>What happens to our recordings if CubbiKind closes?</summary><p>They stay yours. You can download every recording at any time, and if we ever shut down, every family will get advance notice and a simple way to keep them.</p></details>
   </div>
 </section>
