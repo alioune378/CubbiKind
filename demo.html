@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Twin Hug Demo</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -48,9 +49,10 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 .body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:8px 18px 18px;text-align:center}
 .bear{width:170px;height:170px;border:0;background:none;padding:0;cursor:pointer;position:relative}
 .bear:disabled{cursor:default}
-.bear svg{width:100%;height:100%}
-.pulse .heart{animation:beat 1.2s infinite;transform-origin:85px 112px}
-@keyframes beat{0%,100%{transform:scale(1)}40%{transform:scale(1.18)}}
+.bear img{width:100%;height:100%;object-fit:contain;display:block}
+.glow{position:absolute;width:54px;height:54px;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 4px #fff,0 0 18px 6px #ffd27a;opacity:0}
+.pulse .glow{animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{opacity:.2;transform:translate(-50%,-50%) scale(.85)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
 .hint{font-weight:800;font-size:16px;min-height:24px}
 .sub{font-size:14px;opacity:.85}
 .note{background:rgba(255,255,255,.16);border-radius:18px;padding:12px 14px;text-align:left;width:100%;font-size:14px;animation:drop .4s ease-out}
@@ -103,7 +105,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   <div class="stage">
     <div class="phone"><div class="screen night" id="kid">
       <div class="bar"><span id="kTime">5:30 pm</span><span>New York</span></div>
-      <div class="who"><b>Awa's bear</b><span>Twin of Mame Fatou, Dakar</span></div>
+      <div class="who"><b>Awa's Moon twin</b><span>Twin of Mame Fatou, Dakar</span></div>
       <div class="body" id="kBody"></div>
       <div class="burst" id="kBurst"></div>
     </div></div>
@@ -115,7 +117,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 
     <div class="phone"><div class="screen dakar" id="gma">
       <div class="bar"><span id="gTime">10:30 pm</span><span>Dakar</span></div>
-      <div class="who"><b>Mame Fatou's bear</b><span>Twin of Awa, New York</span></div>
+      <div class="who"><b>Mame Fatou's Sun twin</b><span>Twin of Awa, New York</span></div>
       <div class="body" id="gBody"></div>
       <div class="burst" id="gBurst"></div>
     </div></div>
@@ -139,8 +141,8 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   let scen = 'awake', timer = null, today = 0, audio = null;
 
   const heartSvg = (on, half) => `<svg viewBox="0 0 34 34"><path d="M17 29C6 22 2 16 2 11a7.5 7.5 0 0 1 15-4a7.5 7.5 0 0 1 15 4c0 5-4 11-15 18z" fill="${on ? '#ff7a59' : 'none'}" stroke="${on ? '#ff7a59' : 'currentColor'}" stroke-width="2.5" ${half ? 'stroke-dasharray="4 3"' : ''}/></svg>`;
-  const bearSvg = `<svg viewBox="0 0 170 170"><ellipse cx="85" cy="160" rx="52" ry="7" fill="#000" opacity=".25"/><circle cx="52" cy="38" r="17" fill="#c98a55"/><circle cx="118" cy="38" r="17" fill="#c98a55"/><circle cx="52" cy="38" r="8" fill="#f2c9a0"/><circle cx="118" cy="38" r="8" fill="#f2c9a0"/><ellipse cx="85" cy="114" rx="48" ry="44" fill="#c98a55"/><circle cx="85" cy="64" r="40" fill="#d99a63"/><ellipse cx="85" cy="76" rx="17" ry="13" fill="#f2c9a0"/><ellipse cx="85" cy="71" rx="6" ry="4.5" fill="#3a1f2b"/><path d="M80 80q5 5 10 0" stroke="#3a1f2b" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="71" cy="56" r="4" fill="#3a1f2b"/><circle cx="99" cy="56" r="4" fill="#3a1f2b"/><ellipse cx="46" cy="140" rx="17" ry="12" fill="#c98a55"/><ellipse cx="124" cy="140" rx="17" ry="12" fill="#c98a55"/><circle cx="85" cy="112" r="28" fill="#ffd27a" opacity=".35"/><path class="heart" d="M85 128c-16-10-21-18-21-24a10 10 0 0 1 21-5a10 10 0 0 1 21 5c0 6-5 14-21 24z" fill="#ff7a59"/></svg>`;
-  const bear = (id, live, label) => `<button class="bear ${live ? 'pulse' : ''}" id="${id}" ${live ? '' : 'disabled'} aria-label="${label}">${bearSvg}</button>`;
+  const twins = { k: { src: 'img/moon-twin.png', x: '75%', y: '76%' }, g: { src: 'img/sun-twin.png', x: '21%', y: '77%' } };
+  const bear = (id, live, label) => { const t = twins[id[0]]; return `<button class="bear ${live ? 'pulse' : ''}" id="${id}" ${live ? '' : 'disabled'} aria-label="${label}"><img src="${t.src}" alt=""><span class="glow" style="left:${t.x};top:${t.y}"></span></button>`; };
 
   function chime() {
     try {

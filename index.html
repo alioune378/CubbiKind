@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CubbiKind Twins</title>
 <meta name="description" content="Two matching bears. One stays with your child, one goes to someone they love far away. Tap the heart and hear their voice.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<meta property="og:image" content="img/logo-primary.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -48,6 +51,8 @@ nav .links a{text-decoration:none}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:32px}
 .step{background:var(--panel);border-radius:24px;padding:24px}
 .step svg{width:72px;height:72px;margin-bottom:10px}
+.step .ico{height:72px;width:auto;margin-bottom:10px;display:block}
+.hug .demoBox img{width:100%;max-width:420px;height:auto}
 .step p{color:var(--soft);margin-top:8px}
 .hug{background:#3a1f2b;color:#fff}
 .hug .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
@@ -87,7 +92,7 @@ footer a{color:#fff;font-weight:800}
 </head>
 <body>
 <nav>
-  <a class="brand" href="#top">CubbiKind <span style="font-weight:600">Twins</span></a>
+  <a class="brand" href="#top"><img src="img/logo-horizontal.png" alt="CubbiKind" width="150" height="64" style="height:52px;width:auto"></a>
   <div class="links"><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn dark" href="#reserve">Reserve a pair</a></div>
 </nav>
 
@@ -95,35 +100,19 @@ footer a{color:#fff;font-weight:800}
   <div class="wrap">
     <div class="top">
       <div>
-        <h1>One bear, two homes, one family.</h1>
+        <h1>One Cubbi, two homes, one family.</h1>
       </div>
       <div>
         <p class="lead">Two matching bears. One stays with your child, the other goes to someone they love far away. Tap the bear's heart with a phone and hear their voice, in their own language.</p>
         <div class="cta"><a class="btn dark" href="#reserve">Reserve for $5</a><a class="btn light" href="demo.html">Try the Twin Hug demo</a></div>
       </div>
     </div>
-    <div class="scene" role="img" aria-label="Two matching bears, one under a New York night sky and one under a Dakar night sky, joined by a dotted line with a heart travelling between them">
+    <div class="scene" role="img" aria-label="The Moon twin under a New York night sky and the Sun twin under a Dakar sky, each holding half of a heart, joined by a dotted line with a heart travelling between them">
       <svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMax slice">
         <defs>
           <linearGradient id="skyL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1d4a"/><stop offset="1" stop-color="#5b3a6e"/></linearGradient>
           <linearGradient id="skyR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e2c4f"/><stop offset="1" stop-color="#8a4a5a"/></linearGradient>
           <radialGradient id="glow"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
-          <g id="bear">
-            <ellipse cx="0" cy="96" rx="70" ry="10" fill="#000" opacity=".25"/>
-            <circle cx="-44" cy="-74" r="22" fill="#c98a55"/><circle cx="44" cy="-74" r="22" fill="#c98a55"/>
-            <circle cx="-44" cy="-74" r="11" fill="#f2c9a0"/><circle cx="44" cy="-74" r="11" fill="#f2c9a0"/>
-            <ellipse cx="0" cy="38" rx="62" ry="58" fill="#c98a55"/>
-            <ellipse cx="-14" cy="22" rx="30" ry="44" fill="#d99a63" opacity=".6"/>
-            <circle cx="0" cy="-40" r="52" fill="#d99a63"/>
-            <path d="M-52-40a52 52 0 0 0 104 0" fill="#c98a55" opacity=".35"/>
-            <ellipse cx="0" cy="-24" rx="22" ry="17" fill="#f2c9a0"/>
-            <ellipse cx="0" cy="-31" rx="8" ry="6" fill="#3a1f2b"/>
-            <path d="M-7-19q7 7 14 0" stroke="#3a1f2b" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <circle cx="-19" cy="-50" r="5" fill="#3a1f2b"/><circle cx="19" cy="-50" r="5" fill="#3a1f2b"/>
-            <ellipse cx="-50" cy="70" rx="22" ry="16" fill="#c98a55"/><ellipse cx="50" cy="70" rx="22" ry="16" fill="#c98a55"/>
-            <circle cx="0" cy="40" r="34" fill="url(#glow)"/>
-            <path d="M0 58c-20-12-26-22-26-30a12 12 0 0 1 26-6a12 12 0 0 1 26 6c0 8-6 18-26 30z" fill="#ff7a59"/>
-          </g>
           <path id="star" d="M0-6L1.6-1.6 6 0 1.6 1.6 0 6-1.6 1.6-6 0-1.6-1.6z" fill="#fff"/>
         </defs>
         <rect x="0" y="0" width="600" height="440" fill="url(#skyL)"/>
@@ -146,12 +135,12 @@ footer a{color:#fff;font-weight:800}
         </g>
         <rect x="0" y="380" width="600" height="60" fill="#1a1230"/>
         <rect x="600" y="380" width="600" height="60" fill="#2c1520"/>
-        <path id="route" d="M300 250 C 430 60, 770 60, 900 250" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8"/>
+        <path id="route" d="M378 300 C 480 80, 715 80, 818 300" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8"/>
         <path class="fly" d="M0 10c-16-10-22-18-22-25a10 10 0 0 1 22-5a10 10 0 0 1 22 5c0 7-6 15-22 25z" fill="#ff7a59" stroke="#fff" stroke-width="3">
           <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear"><mpath href="#route"/></animateMotion>
         </path>
-        <use href="#bear" x="300" y="290"/>
-        <use href="#bear" x="900" y="290"/>
+        <image href="img/moon-twin.png" x="190" y="128" width="216" height="263"/>
+        <image href="img/sun-twin.png" x="796" y="146" width="216" height="246"/>
       </svg>
       <span class="place" style="left:16px">New York, 8:00 pm</span>
       <span class="place" style="right:16px">Dakar, 1:00 am</span>
@@ -164,7 +153,7 @@ footer a{color:#fff;font-weight:800}
     <h2>How it works</h2>
     <div class="steps">
       <div class="step">
-        <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36" fill="#ffe3d9"/><circle cx="26" cy="36" r="13" fill="#d99a63"/><circle cx="46" cy="36" r="13" fill="#d99a63"/><path d="M26 42c-6-4-8-7-8-9a4 4 0 0 1 8-2a4 4 0 0 1 8 2c0 2-2 5-8 9zM46 42c-6-4-8-7-8-9a4 4 0 0 1 8-2a4 4 0 0 1 8 2c0 2-2 5-8 9z" fill="#ff7a59"/></svg>
+        <img class="ico" src="img/heart.png" alt="" width="96" height="72">
         <h3>Give one twin away</h3>
         <p>Keep one bear at home and give or post the other to a grandparent, a parent away from home, or anyone your child misses.</p>
       </div>
@@ -174,7 +163,7 @@ footer a{color:#fff;font-weight:800}
         <p>They tap their phone on their twin's heart and record a story, a song or a prayer, in any language. No app to install.</p>
       </div>
       <div class="step">
-        <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36" fill="#fff1d1"/><circle cx="36" cy="40" r="16" fill="#d99a63"/><circle cx="26" cy="26" r="6" fill="#c98a55"/><circle cx="46" cy="26" r="6" fill="#c98a55"/><circle cx="36" cy="32" r="13" fill="#d99a63"/><path d="M36 50c-5-3-7-6-7-8a3.5 3.5 0 0 1 7-1.5a3.5 3.5 0 0 1 7 1.5c0 2-2 5-7 8z" fill="#ff7a59"/></svg>
+        <img class="ico" src="img/sun-twin.png" alt="" width="63" height="72">
         <h3>Bedtime, together</h3>
         <p>At bedtime, tap the heart of your child's bear and their loved one's voice plays while they hug it. Record a reply to send back.</p>
       </div>
@@ -193,6 +182,7 @@ footer a{color:#fff;font-weight:800}
       </ol>
     </div>
     <div class="demoBox">
+      <img src="img/twins.png" alt="The Moon twin and the Sun twin holding their half-hearts toward each other" width="420" height="271">
       <h3>See it on two phones</h3>
       <p>Try the clickable demo: New York on one side, Dakar on the other, with grandma awake or asleep.</p>
       <a class="btn light" href="demo.html">Open the Twin Hug demo</a>
@@ -271,7 +261,7 @@ footer a{color:#fff;font-weight:800}
 </section>
 
 <footer class="band">
-  <span>© 2026 CubbiKind. Kindness you can cuddle.</span>
+  <span>© 2026 CubbiKind. One Cubbi, two homes, one family.</span>
   <span>Designed &amp; Developed by <a href="https://dalaltechnologies.com/en/">Dalal Technologies</a></span>
 </footer>
 
