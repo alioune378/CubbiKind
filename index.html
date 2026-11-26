@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CubbiKind Twins</title>
+<meta name="description" content="Two matching bears. One stays with your child, one goes to someone they love far away. Tap the heart and hear their voice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: tender, warm, for parents and grandparents
+   IDEA an airmail parcel between two homes: two bears, two skies, one dotted route
+   PICTURE two bears on two horizons (New York night, Dakar night) joined by a dotted arc with a heart travelling
+   COLOUR coral field, plum ink, mint and honey accents; white sections below
+   TYPE Baloo 2 display + Nunito text
+   LAYOUT laptop: title band over a full-width scene; phone: title, scene, form */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1c1218);--ink:light-dark(#3a1f2b,#f6e9ee);--soft:light-dark(#6d5560,#c9b3bc);--coral:#ff7a59;--coralD:light-dark(#e85d3c,#ff8f72);--mint:#7fd8be;--honey:#ffd27a;--panel:light-dark(#fff4ef,#2a1b23);--line:light-dark(#f1d9cf,#45303a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Nunito,system-ui,sans-serif;overflow-x:clip}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:"Baloo 2",Nunito,sans-serif;line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,6vw,64px);font-weight:800}
+h2{font-size:clamp(30px,4vw,44px);font-weight:800}
+h3{font-size:22px;font-weight:700}
+p{margin:0}
+.band{padding-block:clamp(36px,5vw,72px);padding-inline:max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+nav{position:sticky;top:0;z-index:5;background:var(--coral);color:#3a1f2b;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px max(5vw,16px)}
+.brand{font:800 24px "Baloo 2",sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px}
+nav .links{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-weight:700}
+nav .links a{text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;border:0;font:800 17px Nunito,sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.btn.dark{background:#3a1f2b;color:#fff}
+.btn.light{background:#fff;color:#3a1f2b}
+.hero{background:var(--coral);color:#3a1f2b;padding-bottom:0}
+.hero .top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px 48px;align-items:end}
+.hero p.lead{font-size:20px;max-width:34em;font-weight:600}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.scene{margin-top:28px;border-radius:28px 28px 0 0;overflow:hidden;height:clamp(300px,38vw,440px);position:relative}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.place{position:absolute;bottom:14px;font:700 15px Nunito,sans-serif;color:#fff;background:rgba(0,0,0,.28);padding:4px 12px;border-radius:99px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:32px}
+.step{background:var(--panel);border-radius:24px;padding:24px}
+.step svg{width:72px;height:72px;margin-bottom:10px}
+.step p{color:var(--soft);margin-top:8px}
+.hug{background:#3a1f2b;color:#fff}
+.hug .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.hug ol{margin:18px 0 0;padding-left:22px;display:grid;gap:10px}
+.hug .demoBox{background:#4a2a39;border-radius:28px;padding:28px;display:grid;gap:16px;justify-items:start}
+.hug .demoBox p{color:#f3d9e3}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:28px}
+.who div{border-top:4px solid var(--coral);padding-top:14px}
+.who p{color:var(--soft);margin-top:6px;font-size:16px}
+.promise{background:var(--panel)}
+.promise ul{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px}
+.promise li{padding-left:34px;position:relative}
+.promise li::before{content:"";position:absolute;left:0;top:4px;width:22px;height:22px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%233a1f2b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.reserve .grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.price{display:flex;align-items:baseline;gap:12px;margin:18px 0 8px;flex-wrap:wrap}
+.price b{font:800 56px "Baloo 2",sans-serif;color:var(--coralD);white-space:nowrap}
+.price s{color:var(--soft);white-space:nowrap}
+form{background:var(--panel);border-radius:28px;padding:clamp(20px,3vw,32px);display:grid;gap:16px}
+label{font-weight:800;display:grid;gap:6px}
+input,select{font:16px Nunito,sans-serif;min-height:48px;padding:0 14px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:700}
+.check input{width:24px;min-height:24px;height:24px;margin-top:2px;accent-color:var(--coral);flex:none}
+.small{font-size:14px;color:var(--soft);font-weight:600}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.done{display:none;background:var(--mint);color:#3a1f2b;border-radius:20px;padding:20px;font-weight:700}
+.done.show{display:grid;gap:10px}
+.hidden{display:none}
+.faq details{border-bottom:2px solid var(--line);padding:16px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:18px}
+.faq details p{margin-top:10px;color:var(--soft)}
+footer{background:#3a1f2b;color:#f3d9e3;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px}
+footer a{color:#fff;font-weight:800}
+@media(max-width:860px){.hero .top,.hug .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:300px}}
+@media(prefers-reduced-motion:reduce){.fly{display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="#top">CubbiKind <span style="font-weight:600">Twins</span></a>
+  <div class="links"><a href="#how">How it works</a><a href="#hug">Twin Hug</a><a href="#faq">FAQ</a><a class="btn dark" href="#reserve">Reserve a pair</a></div>
+</nav>
+
+<header class="band hero" id="top">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>One bear, two homes, one family.</h1>
+      </div>
+      <div>
+        <p class="lead">Two matching bears. One stays with your child, the other goes to someone they love far away. Tap the bear's heart with a phone and hear their voice, in their own language.</p>
+        <div class="cta"><a class="btn dark" href="#reserve">Reserve for $5</a><a class="btn light" href="demo.html">Try the Twin Hug demo</a></div>
+      </div>
+    </div>
+    <div class="scene" role="img" aria-label="Two matching bears, one under a New York night sky and one under a Dakar night sky, joined by a dotted line with a heart travelling between them">
+      <svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="skyL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1d4a"/><stop offset="1" stop-color="#5b3a6e"/></linearGradient>
+          <linearGradient id="skyR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e2c4f"/><stop offset="1" stop-color="#8a4a5a"/></linearGradient>
+          <radialGradient id="glow"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+          <g id="bear">
+            <ellipse cx="0" cy="96" rx="70" ry="10" fill="#000" opacity=".25"/>
+            <circle cx="-44" cy="-74" r="22" fill="#c98a55"/><circle cx="44" cy="-74" r="22" fill="#c98a55"/>
+            <circle cx="-44" cy="-74" r="11" fill="#f2c9a0"/><circle cx="44" cy="-74" r="11" fill="#f2c9a0"/>
+            <ellipse cx="0" cy="38" rx="62" ry="58" fill="#c98a55"/>
+            <ellipse cx="-14" cy="22" rx="30" ry="44" fill="#d99a63" opacity=".6"/>
+            <circle cx="0" cy="-40" r="52" fill="#d99a63"/>
+            <path d="M-52-40a52 52 0 0 0 104 0" fill="#c98a55" opacity=".35"/>
+            <ellipse cx="0" cy="-24" rx="22" ry="17" fill="#f2c9a0"/>
+            <ellipse cx="0" cy="-31" rx="8" ry="6" fill="#3a1f2b"/>
+            <path d="M-7-19q7 7 14 0" stroke="#3a1f2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="-19" cy="-50" r="5" fill="#3a1f2b"/><circle cx="19" cy="-50" r="5" fill="#3a1f2b"/>
+            <ellipse cx="-50" cy="70" rx="22" ry="16" fill="#c98a55"/><ellipse cx="50" cy="70" rx="22" ry="16" fill="#c98a55"/>
+            <circle cx="0" cy="40" r="34" fill="url(#glow)"/>
+            <path d="M0 58c-20-12-26-22-26-30a12 12 0 0 1 26-6a12 12 0 0 1 26 6c0 8-6 18-26 30z" fill="#ff7a59"/>
+          </g>
+          <path id="star" d="M0-6L1.6-1.6 6 0 1.6 1.6 0 6-1.6 1.6-6 0-1.6-1.6z" fill="#fff"/>
+        </defs>
+        <rect x="0" y="0" width="600" height="440" fill="url(#skyL)"/>
+        <rect x="600" y="0" width="600" height="440" fill="url(#skyR)"/>
+        <g opacity=".85">
+          <use href="#star" x="90" y="60"/><use href="#star" x="210" y="120" transform="scale(1)"/><use href="#star" x="330" y="50"/><use href="#star" x="480" y="95"/><use href="#star" x="760" y="70"/><use href="#star" x="900" y="130"/><use href="#star" x="1050" y="55"/><use href="#star" x="1140" y="150"/>
+        </g>
+        <circle cx="120" cy="110" r="34" fill="#fff4d6"/><circle cx="135" cy="100" r="30" fill="#3a2a58"/>
+        <g fill="#24183d">
+          <rect x="0" y="250" width="70" height="190"/><rect x="60" y="210" width="60" height="230"/><rect x="115" y="270" width="80" height="170"/><rect x="190" y="180" width="44" height="260"/><rect x="228" y="240" width="90" height="200"/><rect x="310" y="290" width="70" height="150"/><rect x="380" y="230" width="56" height="210"/><rect x="430" y="300" width="170" height="140"/>
+        </g>
+        <g fill="#ffd27a" opacity=".7">
+          <rect x="72" y="230" width="8" height="10"/><rect x="92" y="260" width="8" height="10"/><rect x="200" y="200" width="6" height="9"/><rect x="200" y="230" width="6" height="9"/><rect x="250" y="262" width="8" height="10"/><rect x="392" y="252" width="8" height="10"/><rect x="140" y="292" width="8" height="10"/>
+        </g>
+        <path d="M600 330q90-40 200-26t190-10q120-18 210 0v146H600z" fill="#5a2f3e"/>
+        <g fill="#3d1f2c">
+          <rect x="840" y="250" width="16" height="90"/><path d="M816 250h64l-32-40z"/><circle cx="848" cy="208" r="6"/>
+          <path d="M960 300q20-40 0-80q-10 40 0 80z"/><path d="M955 236q-40-20-60 4q34-6 60 0zM965 236q40-20 60 4q-34-6-60 0zM960 236q-10-40 20-56q-14 26-20 56z"/>
+          <rect x="1040" y="292" width="110" height="60"/><rect x="1060" y="270" width="70" height="26"/>
+        </g>
+        <rect x="0" y="380" width="600" height="60" fill="#1a1230"/>
+        <rect x="600" y="380" width="600" height="60" fill="#2c1520"/>
+        <path id="route" d="M300 250 C 430 60, 770 60, 900 250" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round" opacity=".8"/>
+        <path class="fly" d="M0 10c-16-10-22-18-22-25a10 10 0 0 1 22-5a10 10 0 0 1 22 5c0 7-6 15-22 25z" fill="#ff7a59" stroke="#fff" stroke-width="3">
+          <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear"><mpath href="#route"/></animateMotion>
+        </path>
+        <use href="#bear" x="300" y="290"/>
+        <use href="#bear" x="900" y="290"/>
+      </svg>
+      <span class="place" style="left:16px">New York, 8:00 pm</span>
+      <span class="place" style="right:16px">Dakar, 1:00 am</span>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36" fill="#ffe3d9"/><circle cx="26" cy="36" r="13" fill="#d99a63"/><circle cx="46" cy="36" r="13" fill="#d99a63"/><path d="M26 42c-6-4-8-7-8-9a4 4 0 0 1 8-2a4 4 0 0 1 8 2c0 2-2 5-8 9zM46 42c-6-4-8-7-8-9a4 4 0 0 1 8-2a4 4 0 0 1 8 2c0 2-2 5-8 9z" fill="#ff7a59"/></svg>
+        <h3>Give one twin away</h3>
+        <p>Keep one bear at home and give or post the other to a grandparent, a parent away from home, or anyone your child misses.</p>
+      </div>
+      <div class="step">
+        <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36" fill="#dcf5ec"/><rect x="24" y="14" width="24" height="44" rx="5" fill="#3a1f2b"/><rect x="27" y="19" width="18" height="32" rx="2" fill="#7fd8be"/><path d="M30 35h2M34 30v10M38 32v6M42 34v2" stroke="#3a1f2b" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>They record their voice</h3>
+        <p>They tap their phone on their twin's heart and record a story, a song or a prayer, in any language. No app to install.</p>
+      </div>
+      <div class="step">
+        <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36" fill="#fff1d1"/><circle cx="36" cy="40" r="16" fill="#d99a63"/><circle cx="26" cy="26" r="6" fill="#c98a55"/><circle cx="46" cy="26" r="6" fill="#c98a55"/><circle cx="36" cy="32" r="13" fill="#d99a63"/><path d="M36 50c-5-3-7-6-7-8a3.5 3.5 0 0 1 7-1.5a3.5 3.5 0 0 1 7 1.5c0 2-2 5-7 8z" fill="#ff7a59"/></svg>
+        <h3>Bedtime, together</h3>
+        <p>At bedtime, tap the heart of your child's bear and their loved one's voice plays while they hug it. Record a reply to send back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band hug" id="hug">
+  <div class="wrap grid">
+    <div>
+      <h2>Twin Hug: it only works when both bears are touched</h2>
+      <ol>
+        <li>Your child taps their bear. Grandma's phone says: "Awa is hugging her bear right now."</li>
+        <li>If grandma taps her twin within a few minutes, the hug connects on both phones, and it's saved to your family's Hug Calendar.</li>
+        <li>Asleep on the other side of the world? The hug waits for her. When she hugs back, your child wakes up to "Grandma hugged you back."</li>
+      </ol>
+    </div>
+    <div class="demoBox">
+      <h3>See it on two phones</h3>
+      <p>Try the clickable demo: New York on one side, Dakar on the other, with grandma awake or asleep.</p>
+      <a class="btn light" href="demo.html">Open the Twin Hug demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="who">
+  <div class="wrap">
+    <h2>For every family that lives in more than one place</h2>
+    <div class="who">
+      <div><h3>Grandparents abroad</h3><p>Keep their voice, their language and their bedtime stories in your child's arms.</p></div>
+      <div><h3>Military families</h3><p>A deployed parent stays part of bedtime, wherever they are posted.</p></div>
+      <div><h3>Two-home children</h3><p>Your child carries the other parent's voice between homes.</p></div>
+      <div><h3>Anyone far away</h3><p>Aunts, godparents, big brothers at college. Add an extra twin for each.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band promise" id="promise">
+  <div class="wrap">
+    <h2>Our promises to parents</h2>
+    <ul>
+      <li>No batteries, chips that need charging, cameras or microphones inside the bear. The tag in its heart is thin and battery-free.</li>
+      <li>Soft organic cotton and recycled fill, embroidered eyes and no small parts. Every batch is safety-tested by an independent lab.</li>
+      <li>Adults run the account. You decide who joins your family and what gets recorded.</li>
+      <li>No ads, no selling data, and no AI training on your family's voices. Delete or download everything at any time.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band reserve" id="reserve">
+  <div class="wrap grid">
+    <div>
+      <h2>Reserve your twin pair</h2>
+      <div class="price"><b>$49</b><s>$64 planned retail</s></div>
+      <p>Reserve with a $5 deposit to lock the early-bird price of $49 for a twin pair. Your $5 is fully refundable at any time until your bears ship, and it counts toward your order.</p>
+      <p class="small" style="margin-top:14px">We'll only make the first bears once enough families reserve. You'll hear from us before anything is charged beyond the deposit.</p>
+    </div>
+    <form id="waitlist" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="waitlist">
+      <p class="hidden"><label>Leave empty <input name="bot-field"></label></p>
+      <div class="two">
+        <label for="name">Your first name<input id="name" name="name" autocomplete="given-name" required></label>
+        <label for="email">Email<input id="email" name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <div class="two">
+        <label for="where">Where does the far-away twin live?<input id="where" name="where" placeholder="e.g. Dakar, Senegal"></label>
+        <label for="lang">Language they'll record in<input id="lang" name="language" placeholder="e.g. Wolof, French"></label>
+      </div>
+      <label for="who">Who is the twin for?
+        <select id="who" name="for">
+          <option>A grandparent</option><option>A parent away from home</option><option>A parent in another home</option><option>Another family member</option>
+        </select>
+      </label>
+      <label class="check" for="deposit"><input id="deposit" name="deposit" type="checkbox" value="yes" checked> Yes, I want to reserve with a refundable $5 deposit</label>
+      <button class="btn dark" type="submit" id="sendBtn">Join and reserve</button>
+      <p class="small" id="err" role="alert"></p>
+      <div class="done" id="done" aria-live="polite">
+        <span id="doneMsg">You're on the list. Thank you!</span>
+        <a class="btn dark hidden" id="payLink" href="#">Pay my $5 deposit</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="band faq" id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Does the voice come out of the bear?</summary><p>The voice plays from the phone you tap on the bear's heart, so the bear stays soft, washable and safe from birth.</p></details>
+    <details><summary>What phones work?</summary><p>Most iPhones and Android phones from recent years can read the tag in the heart. Every bear also has a printed code on its label for older phones.</p></details>
+    <details><summary>Does grandma need an app?</summary><p>No. She taps her bear with her phone and her family page opens in the browser. Messages and invites can come by WhatsApp or text.</p></details>
+    <details><summary>When will the bears ship?</summary><p>We're finishing samples and testing with our first families. Reservers will get the date first, before we take any full payment.</p></details>
+    <details><summary>Can I get my $5 back?</summary><p>Yes, at any time until your bears ship. Just reply to any of our emails.</p></details>
+  </div>
+</section>
+
+<footer class="band">
+  <span>© 2026 CubbiKind. Kindness you can cuddle.</span>
+  <span>Designed &amp; Developed by <a href="https://dalaltechnologies.com/en/">Dalal Technologies</a></span>
+</footer>
+
+<script>
+{
+  const RESERVE_URL = ""; // paste your Stripe Payment Link for the $5 deposit here
+  const form = document.getElementById('waitlist');
+  const err = document.getElementById('err');
+  const done = document.getElementById('done');
+  const pay = document.getElementById('payLink');
+  const live = /netlify\.app$|cubbikind/i.test(location.hostname);
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.textContent = '';
+    const name = form.name.value.trim(), email = form.email.value.trim();
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.textContent = 'Please add your first name and a valid email.'; return; }
+    const data = new URLSearchParams(new FormData(form)).toString();
+    if (live) {
+      try {
+        const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data });
+        if (!r.ok) throw new Error();
+      } catch (x) { err.textContent = 'Something went wrong. Please try again in a minute.'; return; }
+    }
+    const wantsDeposit = form.deposit.checked;
+    document.getElementById('doneMsg').textContent = (live ? '' : 'Preview only, nothing was sent. ') + (wantsDeposit ? 'Thank you, ' + name + '! One last step to lock your $49 early-bird price:' : 'Thank you, ' + name + "! You're on the list.");
+    if (wantsDeposit && RESERVE_URL) { pay.href = RESERVE_URL; pay.classList.remove('hidden'); }
+    else if (wantsDeposit) { pay.classList.add('hidden'); document.getElementById('doneMsg').textContent += " We'll email you the deposit link shortly."; }
+    done.classList.add('show');
+    document.getElementById('sendBtn').disabled = true;
+  });
+}
+</script>
+</body>
+</html>
