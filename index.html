@@ -86,7 +86,7 @@ input,select{font:16px Nunito,sans-serif;min-height:48px;padding:0 14px;border-r
 footer{background:#3a1f2b;color:#f3d9e3;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px}
 footer a{color:#fff;font-weight:800}
 @media(max-width:860px){.hero .top,.hug .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:300px}}
+@media(max-width:600px){.steps,.who,.promise ul,.two{grid-template-columns:minmax(0,1fr)}nav .links a:not(.btn){display:none}.scene{height:330px}}
 @media(prefers-reduced-motion:reduce){.fly{display:none}}
 </style>
 </head>
@@ -139,8 +139,8 @@ footer a{color:#fff;font-weight:800}
         <path class="fly" d="M0 10c-16-10-22-18-22-25a10 10 0 0 1 22-5a10 10 0 0 1 22 5c0 7-6 15-22 25z" fill="#ff7a59" stroke="#fff" stroke-width="3">
           <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="linear"><mpath href="#route"/></animateMotion>
         </path>
-        <image href="img/moon-twin.png" x="190" y="128" width="216" height="263"/>
-        <image href="img/sun-twin.png" x="796" y="146" width="216" height="246"/>
+        <image id="moonT" href="img/moon-twin.png" x="190" y="128" width="216" height="263"/>
+        <image id="sunT" href="img/sun-twin.png" x="796" y="146" width="216" height="246"/>
       </svg>
       <span class="place" style="left:16px">New York, 8:00 pm</span>
       <span class="place" style="right:16px">Dakar, 1:00 am</span>
@@ -182,7 +182,7 @@ footer a{color:#fff;font-weight:800}
       </ol>
     </div>
     <div class="demoBox">
-      <img src="img/twins.png" alt="The Moon twin and the Sun twin holding their half-hearts toward each other" width="420" height="271">
+      <img src="img/twins.png" alt="The Moon twin and the Sun twin holding their half-hearts toward each other" width="420" height="215">
       <h3>See it on two phones</h3>
       <p>Try the clickable demo: New York on one side, Dakar on the other, with grandma awake or asleep.</p>
       <a class="btn light" href="demo.html">Open the Twin Hug demo</a>
@@ -267,6 +267,20 @@ footer a{color:#fff;font-weight:800}
 
 <script>
 {
+
+  // keep both twins fully visible at any screen width
+  const svg = document.querySelector('.scene svg'), moon = document.getElementById('moonT'), sun = document.getElementById('sunT'), route = document.getElementById('route');
+  const place = () => {
+    const r = svg.getBoundingClientRect(); if (!r.width) return;
+    const vw = Math.min(1200, 440 * r.width / r.height), left = 600 - vw / 2;
+    const w = Math.min(216, vw * 0.31), mh = w * 263 / 216, sh = w * 246 / 216, pad = vw * 0.05;
+    const mx = Math.max(190, left + pad), sx = Math.min(796, left + vw - pad - w);
+    moon.setAttribute('x', mx); moon.setAttribute('width', w); moon.setAttribute('height', mh); moon.setAttribute('y', 391 - mh);
+    sun.setAttribute('x', sx); sun.setAttribute('width', w); sun.setAttribute('height', sh); sun.setAttribute('y', 392 - sh);
+    const ax = mx + w * .87, ay = 391 - mh * .3, bx = sx + w * .13, by = 392 - sh * .3, top = Math.min(ay, by) - (bx - ax) * .45;
+    route.setAttribute('d', `M${ax} ${ay} C ${ax + (bx - ax) * .2} ${top}, ${bx - (bx - ax) * .2} ${top}, ${bx} ${by}`);
+  };
+  const ro = new ResizeObserver(place); ro.observe(svg); place();
   const RESERVE_URL = ""; // paste your Stripe Payment Link for the $5 deposit here
   const form = document.getElementById('waitlist');
   const err = document.getElementById('err');
