@@ -319,12 +319,12 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
     <div class="night stars">
       <span class="orb" aria-hidden="true"></span>
       <img src="img/moon-twin.png" alt="Tukki Moon illustration under a night sky" width="500" height="610" loading="lazy">
-      <span class="when">New York · 2:00 am</span>
+      <span class="when">Ohio · 8:30 pm</span>
     </div>
     <div class="day">
       <span class="orb" aria-hidden="true"></span>
       <img src="img/sun-twin.png" alt="Tukki Sun illustration in morning light" width="500" height="569" loading="lazy">
-      <span class="when">Dakar · 7:00 am</span>
+      <span class="when">Arizona · 6:30 pm</span>
     </div>
     <svg class="flyer" id="flyer" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 30C6 23 2 17 2 12a7.5 7.5 0 0 1 15-4a7.5 7.5 0 0 1 15 4c0 5-4 11-15 18z" fill="#ff7a59" stroke="#fff" stroke-width="2.5"/></svg>
   </div>
@@ -333,14 +333,14 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
     <p class="lead">Even when the world is asleep, a hug can be waiting for you. Tukki Hug connects only when both Tukkibears are touched. If one home is asleep, the hug waits until morning.</p>
     <span class="demo-tag">Demonstration · simulated until the Tukkibear app launches</span>
     <div class="row">
-      <button class="btn coral" id="sendHug" type="button">Send a hug from New York</button>
+      <button class="btn coral" id="sendHug" type="button">Send a hug from Ohio</button>
       <a class="btn light" href="demo.html">Experience Tukki Hug on two phones</a>
     </div>
     <p class="status" id="hugStatus" aria-live="polite"></p>
     <ol>
-      <li>Your child taps their Tukki. The loved one's phone says: "Awa is hugging her Tukki right now."</li>
+      <li>Your child taps their Tukki. The loved one's phone says: "Mia is hugging her Tukki right now."</li>
       <li>If they tap their own Tukki within a few minutes, the hug connects on both phones and is saved to your family's Hug Calendar.</li>
-      <li>Asleep on the other side of the world? The hug waits. Your child wakes up to "Grandma hugged you back."</li>
+      <li>Grandma already asleep? The hug waits until she wakes up, and your child hears "Grandma hugged you back."</li>
     </ol>
   </div>
 </section>
@@ -362,9 +362,9 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
       <p class="lead">Children growing up far from their grandparents can lose the language, the songs and the stories that shaped their family. With Tukki, a grandmother's lullaby, a grandfather's proverb and a bedtime prayer stay in the voice and language they were meant to be heard in.</p>
     </div>
     <div class="reveal">
-      <p class="big" aria-live="off">Recorded in <span id="langWord">Wolof</span></p>
+      <p class="big" aria-live="off">Recorded in <span id="langWord">English</span></p>
       <div class="chips" aria-label="Examples of languages families record in">
-        <span>Wolof</span><span>Arabic</span><span>Spanish</span><span>Somali</span><span>Tagalog</span><span>French</span><span>Yoruba</span><span>Haitian Creole</span><span>Portuguese</span><span>Hindi</span><span>Vietnamese</span><span>Amharic</span>
+        <span>English</span><span>Spanish</span><span>French</span><span>Italian</span><span>Arabic</span><span>Tagalog</span><span>Korean</span><span>Hindi</span><span>Portuguese</span><span>Vietnamese</span><span>Polish</span><span>Haitian Creole</span>
       </div>
       <p class="fine" style="margin-top:16px">Every language is welcome. If you can say it or sing it, Tukki can carry it.</p>
     </div>
@@ -437,8 +437,8 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
             </select>
           </label>
           <div class="two">
-            <label for="where">Where will it live?<input id="where" name="where" placeholder="e.g. Dakar, Senegal"></label>
-            <label for="lang">Language they'll record in<input id="lang" name="language" placeholder="e.g. Wolof, French"></label>
+            <label for="where">Where will it live?<input id="where" name="where" placeholder="e.g. Phoenix, Arizona"></label>
+            <label for="lang">Language they'll record in<input id="lang" name="language" placeholder="e.g. English, Spanish"></label>
           </div>
         </div>
       </details>
@@ -499,7 +499,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   } else els.forEach(el => el.classList.add('in'));
 
   // rotating language word
-  const words = ['Wolof', 'Arabic', 'Spanish', 'Somali', 'Tagalog', 'French', 'Yoruba', 'Haitian Creole', 'Hindi', 'your language'];
+  const words = ['English', 'Spanish', 'French', 'Italian', 'Arabic', 'Tagalog', 'Korean', 'Hindi', 'your language'];
   const lw = document.getElementById('langWord'); let wi = 0;
   if (lw && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => { wi = (wi + 1) % words.length; lw.textContent = words[wi]; }, 1800);
 
@@ -508,9 +508,9 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   let busy = false;
   send.addEventListener('click', () => {
     if (busy) return; busy = true;
-    st.textContent = 'Hug sent from New York. It is 7:00 am in Dakar…';
+    st.textContent = 'Hug sent from Ohio. It is 6:30 pm in Arizona…';
     flyer.classList.remove('go'); void flyer.getBoundingClientRect(); flyer.classList.add('go');
-    setTimeout(() => { st.textContent = 'Mame Fatou touched her Tukki Sun: hug connected. A heart was added to the Hug Calendar.'; busy = false; }, 2500);
+    setTimeout(() => { st.textContent = 'Grandma Ruth touched her Tukki Sun: hug connected. A heart was added to the Hug Calendar.'; busy = false; }, 2500);
   });
 
 

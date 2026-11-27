@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* VOICE occasion, tender: a live demo shown to pilot families
-   IDEA two real phones on a table, New York and Dakar, joined by an airmail dotted line
+   IDEA two real phones on a table, Ohio and Arizona, joined by an airmail dotted line
    PICTURE the two working phones themselves, side by side
    COLOUR coral band, plum ink, mint and honey accents; night screens inside the phones
    TYPE Baloo 2 display + Nunito text
@@ -40,7 +40,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 .phone{width:min(100%,310px);aspect-ratio:310/620;background:#1b1116;border-radius:44px;padding:12px;box-shadow:0 2px 0 #000,0 18px 40px -18px rgba(58,31,43,.6)}
 .screen{position:relative;height:100%;border-radius:34px;overflow:hidden;color:#fff;display:flex;flex-direction:column;transition:background .6s}
 .screen.night{background:linear-gradient(#2b1d4a,#5b3a6e)}
-.screen.dakar{background:linear-gradient(#1e2c4f,#8a4a5a)}
+.screen.far{background:linear-gradient(#1e2c4f,#8a4a5a)}
 .screen.sleep{background:linear-gradient(#0d0a16,#1d1630)}
 .screen.morning{background:linear-gradient(#ffb48a,#ffe0a3);color:#3a1f2b}
 .bar{display:flex;justify-content:space-between;padding:12px 22px 0;font-weight:800;font-size:14px}
@@ -90,7 +90,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
     <div>
       <a class="back" href="index.html">← Back to Tukkibear</a>
       <h1>Tukki Hug demo</h1>
-      <p>Tap the heart on Awa's Tukki Moon, send a hug, then answer it from Mame Fatou's Tukki Sun.</p>
+      <p>Tap the heart on Mia's Tukki Moon, send a hug, then answer it from Grandma Ruth's Tukki Sun.</p>
       <span class="demo-tag">Demonstration · simulated until the Tukkibear app launches</span>
     </div>
     <div class="ctrl">
@@ -106,20 +106,20 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 <main>
   <div class="stage">
     <div class="phone"><div class="screen night" id="kid">
-      <div class="bar"><span id="kTime">5:30 pm</span><span>New York</span></div>
-      <div class="who"><b>Awa's Moon twin</b><span>Twin of Mame Fatou, Dakar</span></div>
+      <div class="bar"><span id="kTime">7:30 pm</span><span>Ohio</span></div>
+      <div class="who"><b>Mia's Moon twin</b><span>Twin of Grandma Ruth, Arizona</span></div>
       <div class="body" id="kBody"></div>
       <div class="burst" id="kBurst"></div>
     </div></div>
 
     <div class="link" aria-hidden="true">
       <svg viewBox="0 0 110 40"><path d="M5 30Q55-8 105 30" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/><path d="M55 22c-7-4-10-8-10-11a5 5 0 0 1 10-2a5 5 0 0 1 10 2c0 3-3 7-10 11z" fill="#ff7a59"/></svg>
-      <span id="gap">5 hours apart</span>
+      <span id="gap">2 hours apart</span>
     </div>
 
-    <div class="phone"><div class="screen dakar" id="gma">
-      <div class="bar"><span id="gTime">10:30 pm</span><span>Dakar</span></div>
-      <div class="who"><b>Mame Fatou's Sun twin</b><span>Twin of Awa, New York</span></div>
+    <div class="phone"><div class="screen far" id="gma">
+      <div class="bar"><span id="gTime">5:30 pm</span><span>Arizona</span></div>
+      <div class="who"><b>Grandma Ruth's Sun twin</b><span>Twin of Mia, Ohio</span></div>
       <div class="body" id="gBody"></div>
       <div class="burst" id="gBurst"></div>
     </div></div>
@@ -137,7 +137,7 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 {
   const $ = id => document.getElementById(id);
   const kid = $('kid'), gma = $('gma'), kBody = $('kBody'), gBody = $('gBody');
-  const S = { awake: { ny: '5:30 pm', dk: '10:30 pm' }, asleep: { ny: '8:00 pm', dk: '1:00 am' } };
+  const S = { awake: { ny: '7:30 pm', dk: '5:30 pm' }, asleep: { ny: '7:00 am', dk: '5:00 am' } };
   const hist = [1,1,0,1,1,1,0,1,1,1,1,0,1]; // last 13 days, sample
   const dayNames = ['Th','Fr','Sa','Su','Mo','Tu','We'];
   let scen = 'awake', timer = null, today = 0, audio = null;
@@ -165,29 +165,29 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   function stop() { clearInterval(timer); timer = null; }
 
   function kidHome() {
-    kBody.innerHTML = bear('kHeart', true, "Tap the heart on Awa's bear") + `<p class="hint">Tap the heart</p><p class="sub">Tonight: a bedtime story from Mame Fatou</p>`;
+    kBody.innerHTML = bear('kHeart', true, "Tap the heart on Mia's bear") + `<p class="hint">Tap the heart</p><p class="sub">Tonight: a bedtime story from Grandma Ruth</p>`;
     $('kHeart').onclick = kidPlay;
   }
   function gmaIdle() {
     if (scen === 'asleep') { gma.className = 'screen sleep'; gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p>`; }
-    else { gma.className = 'screen dakar'; gBody.innerHTML = bear('gIdle', false, "Mame Fatou's bear") + `<p class="sub">Evening in Dakar</p>`; }
+    else { gma.className = 'screen far'; gBody.innerHTML = bear('gIdle', false, "Grandma Ruth's bear") + `<p class="sub">Evening in Arizona</p>`; }
   }
   function kidPlay() {
     let p = 0;
-    kBody.innerHTML = `<p class="hint">Mame Fatou is reading</p><p class="sub">"Leuk the hare", in Wolof · 1:12</p><div class="wave">${'<i></i>'.repeat(9).replace(/<i>/g, () => `<i style="animation-delay:${(Math.random() * .8).toFixed(2)}s">`)}</div><div class="meter"><b id="m"></b></div><button class="pbtn" id="sendHug">Send a Tukki Hug</button>`;
+    kBody.innerHTML = `<p class="hint">Grandma Ruth is reading</p><p class="sub">"The Three Little Bears", read aloud · 1:12</p><div class="wave">${'<i></i>'.repeat(9).replace(/<i>/g, () => `<i style="animation-delay:${(Math.random() * .8).toFixed(2)}s">`)}</div><div class="meter"><b id="m"></b></div><button class="pbtn" id="sendHug">Send a Tukki Hug</button>`;
     stop(); timer = setInterval(() => { p = Math.min(100, p + 2.5); $('m').style.width = p + '%'; if (p >= 100) stop(); }, 100);
     $('sendHug').onclick = kidWait;
   }
   function kidWait() {
     stop();
     let secs = 300;
-    kBody.innerHTML = bear('kWait', false, "Awa's bear") + `<p class="hint">Hug sent to Mame Fatou</p><p class="sub">Waiting for her to hug back</p><p class="count" id="cd">5:00</p>`;
+    kBody.innerHTML = bear('kWait', false, "Mia's bear") + `<p class="hint">Hug sent to Grandma Ruth</p><p class="sub">Waiting for her to hug back</p><p class="count" id="cd">5:00</p>`;
     if (scen === 'awake') {
-      gma.className = 'screen dakar';
-      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Awa is hugging her bear right now. Hug back within 5 minutes to connect.</div>` + bear('gHeart', true, "Tap the heart on Mame Fatou's bear") + `<p class="hint">Tap your twin's heart</p>`;
+      gma.className = 'screen far';
+      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Mia is hugging her bear right now. Hug back within 5 minutes to connect.</div>` + bear('gHeart', true, "Tap the heart on Grandma Ruth's bear") + `<p class="hint">Tap your twin's heart</p>`;
       $('gHeart').onclick = connect;
     } else {
-      gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><div class="note"><b>Tukkibear · silent</b>Awa is hugging her bear right now.</div>`;
+      gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><div class="note"><b>Tukkibear · silent</b>Mia is hugging her bear right now.</div>`;
     }
     timer = setInterval(() => {
       secs -= 5; const m = Math.floor(secs / 60), s = String(secs % 60).padStart(2, '0');
@@ -197,36 +197,36 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   }
   function connect() {
     stop(); chime(); today = 1; drawCal();
-    kBody.innerHTML = bear('kOk', false, "Awa's bear") + `<p class="big">Hug connected!</p><p class="sub">Mame Fatou hugged back from Dakar</p>`;
-    gBody.innerHTML = bear('gOk', false, "Mame Fatou's bear") + `<p class="big">Hug connected!</p><p class="sub">Awa felt your hug in New York</p>`;
+    kBody.innerHTML = bear('kOk', false, "Mia's bear") + `<p class="big">Hug connected!</p><p class="sub">Grandma Ruth hugged back from Arizona</p>`;
+    gBody.innerHTML = bear('gOk', false, "Grandma Ruth's bear") + `<p class="big">Hug connected!</p><p class="sub">Mia felt your hug in Ohio</p>`;
     burst($('kBurst')); burst($('gBurst'));
   }
   function hugLeft() {
     if (scen === 'awake') {
-      kBody.innerHTML = bear('kLeft', false, "Awa's bear") + `<p class="hint">Your hug is waiting for Mame Fatou</p><p class="sub">She'll get it as soon as she picks up her bear</p>`;
-      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>You missed a hug from Awa. Hug back now.</div>` + bear('gLate', true, "Tap the heart on Mame Fatou's bear to hug back") + `<p class="hint">Tap your twin's heart</p>`;
-      $('gLate').onclick = () => { chime(); today = .5; drawCal(); gBody.innerHTML = bear('gL2', false, "Mame Fatou's bear") + `<p class="big">Hug sent back</p>`; kBody.innerHTML = bear('kL2', false, "Awa's bear") + `<p class="big">Mame Fatou hugged you back</p>`; burst($('kBurst')); burst($('gBurst')); };
+      kBody.innerHTML = bear('kLeft', false, "Mia's bear") + `<p class="hint">Your hug is waiting for Grandma Ruth</p><p class="sub">She'll get it as soon as she picks up her bear</p>`;
+      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>You missed a hug from Mia. Hug back now.</div>` + bear('gLate', true, "Tap the heart on Grandma Ruth's bear to hug back") + `<p class="hint">Tap your twin's heart</p>`;
+      $('gLate').onclick = () => { chime(); today = .5; drawCal(); gBody.innerHTML = bear('gL2', false, "Grandma Ruth's bear") + `<p class="big">Hug sent back</p>`; kBody.innerHTML = bear('kL2', false, "Mia's bear") + `<p class="big">Grandma Ruth hugged you back</p>`; burst($('kBurst')); burst($('gBurst')); };
       return;
     }
-    kBody.innerHTML = bear('kLeft', false, "Awa's bear") + `<p class="hint">Your hug is waiting for Mame Fatou</p><p class="sub">She'll find it when she wakes up</p>`;
+    kBody.innerHTML = bear('kLeft', false, "Mia's bear") + `<p class="hint">Your hug is waiting for Grandma Ruth</p><p class="sub">She'll find it when she wakes up</p>`;
     gma.className = 'screen sleep';
-    gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><button class="pbtn alt" id="skip">Skip to 7:00 am in Dakar</button>`;
+    gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><button class="pbtn alt" id="skip">Skip to 7:00 am in Arizona</button>`;
     $('skip').onclick = morning;
   }
   function morning() {
-    $('gTime').textContent = '7:00 am'; $('kTime').textContent = '2:00 am';
+    $('gTime').textContent = '7:00 am'; $('kTime').textContent = '9:00 am';
     gma.className = 'screen morning';
-    gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Awa left you a hug last night.</div>` + bear('gBack', true, "Tap the heart on Mame Fatou's bear to hug back") + `<p class="hint">Tap your twin's heart to hug back</p>`;
+    gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Mia left you a hug this morning.</div>` + bear('gBack', true, "Tap the heart on Grandma Ruth's bear to hug back") + `<p class="hint">Tap your twin's heart to hug back</p>`;
     $('gBack').onclick = huggedBack;
   }
   function huggedBack() {
     chime(); today = .5; drawCal();
-    gBody.innerHTML = bear('gDone', false, "Mame Fatou's bear") + `<p class="big">Hug sent back</p><p class="sub">Awa will see it when she wakes up</p>`;
+    gBody.innerHTML = bear('gDone', false, "Grandma Ruth's bear") + `<p class="big">Hug sent back</p><p class="sub">Mia will see it after school</p>`;
     burst($('gBurst'));
     setTimeout(() => {
-      $('kTime').textContent = '7:00 am'; $('gTime').textContent = '12:00 pm';
+      $('kTime').textContent = '3:30 pm'; $('gTime').textContent = '1:30 pm';
       kid.className = 'screen morning';
-      kBody.innerHTML = `<div class="note"><b>Good morning, Awa!</b>Mame Fatou hugged you back at 2:00 am.</div>` + bear('kMorn', false, "Awa's bear") + `<p class="big">Grandma hugged you back</p>`;
+      kBody.innerHTML = `<div class="note"><b>Welcome home, Mia!</b>Grandma Ruth hugged you back at 7:00 am.</div>` + bear('kMorn', false, "Mia's bear") + `<p class="big">Grandma hugged you back</p>`;
       burst($('kBurst'));
     }, 1600);
   }
