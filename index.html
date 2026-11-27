@@ -135,7 +135,7 @@ nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .hugtext ol{text-align:left;max-width:600px;margin:32px auto 0;padding-left:22px;display:grid;gap:10px;color:#f3d9e3}
 /* bedtime */
 .bed{position:relative;min-height:clamp(440px,52vw,640px);display:grid;align-items:end;color:#fff;overflow:hidden}
-.bed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.bed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 62%}
 .bed::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,22,30,.82) 0%,rgba(43,22,30,.45) 45%,rgba(43,22,30,0) 75%)}
 .bed .wrap{position:relative;z-index:1;width:100%;padding-block:clamp(36px,6vw,80px)}
 .bed h2{max-width:11em;color:#fff}
@@ -149,6 +149,12 @@ nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .chips span{background:#fff;border:2px solid var(--line);border-radius:99px;padding:7px 15px;font-weight:800;font-size:15px}
 .chips span:nth-child(3n+1){border-color:var(--mint)}.chips span:nth-child(3n+2){border-color:var(--honey)}.chips span:nth-child(3n){border-color:#ffb39f}
+/* reservation tiers */
+.tiers{margin:22px 0 4px;display:grid;gap:10px}
+.tiers div{display:grid;grid-template-columns:minmax(0,10.5em) minmax(0,1fr);gap:12px;padding:12px 16px;background:#fff;border-radius:16px;border:1px solid #f3d9cf}
+.tiers dt{font:800 17px "Baloo 2",sans-serif;color:var(--plum)}
+.tiers dd{margin:0;color:var(--soft);font-size:15px}
+@media(max-width:560px){.tiers div{grid-template-columns:minmax(0,1fr);gap:2px}}
 /* gift */
 .gift{background:var(--cream)}
 .gift .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
@@ -209,7 +215,7 @@ footer .small{margin-top:14px;font-size:14px;opacity:.85}
 @media(max-width:900px){nav .links a:not(.btn){display:none}.how .grid,.lang .grid,.gift .grid,.reserve .grid{grid-template-columns:minmax(0,1fr)}.promise .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.meet .trio{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.join{grid-column:1/-1;order:3}}
 @media(max-width:760px){
 .hero{padding-top:18px}
-.hero .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "img" "c"}
+.hero .wrap{grid-template-columns:minmax(0,1fr);grid-template-areas:"img" "h" "c"}.hero h1{margin-top:22px}
 .hero h1{font-size:40px;margin-bottom:16px}
 .hero .copy{margin-top:18px}
 .hero figure{margin-inline:calc(-1 * max(5vw,18px))}
@@ -245,7 +251,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
       <span class="badge">Concept visualization</span>
     </figure>
     <div class="copy">
-      <p class="lead"><b>Two lovable bears that keep families connected through personal voice messages. Keep one, send the other to someone you love, and tap its heart with your phone to hear their voice.</b></p>
+      <p class="lead"><b>Keep one Tukki. Give the other to someone you love. Share personal voice messages with a simple tap of the heart.</b></p>
       <div class="cta">
         <a class="btn coral" href="#reserve">Reserve your twins · $49 launch price</a>
         <a class="btn line" href="#film" id="filmBtn">▶ See how it works · 15 seconds</a>
@@ -346,7 +352,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
 </section>
 
 <section class="bed" aria-labelledby="bedTitle">
-  <img src="img/bedtime.webp" alt="Tukki Sun sitting beside a sleeping toddler in warm evening light" width="1536" height="1024" loading="lazy">
+  <img src="img/tukkibear-box-open.webp" alt="Tukki Moon and Tukki Sun side by side in their open gift box in warm evening light" width="1448" height="1086" loading="lazy">
   <div class="wrap reveal">
     <h2 id="bedTitle">Goodnight, from anywhere in the world.</h2>
     <p>A familiar voice. A favorite story. A little reminder that love is never far away.</p>
@@ -364,7 +370,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
     <div class="reveal">
       <p class="big" aria-live="off">Recorded in <span id="langWord">English</span></p>
       <div class="chips" aria-label="Examples of languages families record in">
-        <span>English</span><span>Spanish</span><span>French</span><span>Italian</span><span>Arabic</span><span>Tagalog</span><span>Korean</span><span>Hindi</span><span>Portuguese</span><span>Vietnamese</span><span>Polish</span><span>Haitian Creole</span>
+        <span>English</span><span>Spanish</span><span>French</span><span>Italian</span><span>Arabic</span><span>Tagalog</span><span>Korean</span><span>Hindi</span><span>Portuguese</span><span>Vietnamese</span><span>Polish</span><span>Somali</span><span>Wolof</span><span>Haitian Creole</span>
       </div>
       <p class="fine" style="margin-top:16px">Every language is welcome. If you can say it or sing it, Tukki can carry it.</p>
     </div>
@@ -413,6 +419,12 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
       <h2>Be first to bring love closer.</h2>
       <div class="price"><b>$49</b><s>$64 planned retail</s></div>
       <p class="lead">Early-bird price for one Tukki Moon and Tukki Sun pair.</p>
+      <dl class="tiers">
+        <div><dt>Free reservation</dt><dd>Join the launch list. No payment.</dd></div>
+        <div><dt>$5 VIP reservation</dt><dd>Optional and fully refundable. Locks in the $49 early-bird price.</dd></div>
+        <div><dt>$49 launch price</dt><dd>Both twins, Tukki Moon and Tukki Sun, in their gift box.</dd></div>
+        <div><dt>$64 planned retail</dt><dd>The price after the introductory campaign.</dd></div>
+      </dl>
       <ol class="path">
         <li><span class="dot">Now</span><div><h3>Reserve, don't buy</h3><p>Join the list for free, or add a refundable $5 VIP reservation to guarantee the $49 early-bird price. A reservation is not a purchase.</p></div></li>
         <li><span class="dot">Next</span><div><h3>Order when the campaign opens</h3><p>Reservers get the link first. You choose then whether to order your pair at $49. Your $5 is refunded once you do, or any time you ask.</p></div></li>
@@ -427,7 +439,7 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
         <label for="name">Your first name<input id="name" name="name" autocomplete="given-name" required></label>
         <label for="email">Email<input id="email" name="email" type="email" autocomplete="email" required></label>
       </div>
-      <label class="check" for="deposit"><input id="deposit" name="deposit" type="checkbox" value="yes" checked> Yes, I'd like the refundable $5 VIP reservation</label>
+      <label class="check" for="deposit"><input id="deposit" name="deposit" type="checkbox" value="yes"> Yes, I'd like the refundable $5 VIP reservation (optional)</label>
       <details class="more">
         <summary>Tell us about your family (optional)</summary>
         <div class="morebody">
