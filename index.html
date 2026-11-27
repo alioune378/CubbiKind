@@ -20,7 +20,7 @@
    COLOUR white and soft cream lead; coral for action, mint and honey as small accents, plum for ink and the night band
    TYPE Baloo 2 display + Nunito text
    LAYOUT laptop: copy left, large product photo right; phone: headline, photo, copy, buttons */
-:root{color-scheme:light;--white:#fff;--cream:#fff4ef;--coral:#ff7a59;--coralD:#e85d3c;--mint:#7fd8be;--honey:#ffd27a;--plum:#3a1f2b;--soft:#6d5560;--line:#f1dfd7}
+:root{color-scheme:light;--white:#fff;--cream:#fff4ef;--coral:#ff7a59;--coralD:#e85d3c;--mint:#7fd8be;--honey:#ffd27a;--plum:#3a1f2b;--cta:#f2683f;--soft:#6d5560;--line:#f1dfd7}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--white);color:var(--plum);font:17px/1.65 Nunito,system-ui,sans-serif;overflow-x:clip}
@@ -39,7 +39,7 @@ p{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;border:0;font:800 17px Nunito,sans-serif;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-1px)}
 .btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
-.btn.coral{background:var(--coral);color:var(--plum);box-shadow:0 10px 24px -12px rgba(232,93,60,.7)}
+.btn.coral{background:var(--cta);color:var(--plum);box-shadow:0 10px 24px -12px rgba(232,93,60,.7)}
 .btn.line{background:transparent;color:var(--plum);border:2px solid var(--plum)}
 .btn.light{background:#fff;color:var(--plum)}
 .fine{font-size:14px;color:var(--soft)}
@@ -131,6 +131,7 @@ nav .btn{min-height:44px;padding:0 18px;font-size:15px}
 .hugtext .lead{color:#f3d9e3;margin:16px auto 0}
 .hugtext .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
 .hugtext .status{min-height:28px;margin-top:18px;font-weight:700;color:var(--honey)}
+.hugtext .status.ok{color:var(--mint)}
 .demo-tag{display:inline-block;margin-top:14px;font-size:13px;font-weight:800;color:var(--plum);background:var(--mint);padding:4px 12px;border-radius:99px}
 .hugtext ol{text-align:left;max-width:600px;margin:32px auto 0;padding-left:22px;display:grid;gap:10px;color:#f3d9e3}
 /* bedtime */
@@ -520,9 +521,9 @@ footer .wrap{grid-template-columns:minmax(0,1fr)}
   let busy = false;
   send.addEventListener('click', () => {
     if (busy) return; busy = true;
-    st.textContent = 'Hug sent from Ohio. It is 6:30 pm in Arizona…';
+    st.classList.remove('ok'); st.textContent = 'Hug sent from Ohio. It is 6:30 pm in Arizona…';
     flyer.classList.remove('go'); void flyer.getBoundingClientRect(); flyer.classList.add('go');
-    setTimeout(() => { st.textContent = 'Grandma Ruth touched her Tukki Sun: hug connected. A heart was added to the Hug Calendar.'; busy = false; }, 2500);
+    setTimeout(() => { st.classList.add('ok'); st.textContent = 'Grandma Ruth touched her Tukki Sun: hug connected. A heart was added to the Hug Calendar.'; busy = false; }, 2500);
   });
 
 

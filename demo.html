@@ -15,7 +15,7 @@
    COLOUR coral band, plum ink, mint and honey accents; night screens inside the phones
    TYPE Baloo 2 display + Nunito text
    LAYOUT laptop: modest title and controls, then both phones in a row; phone: controls, child phone, grandma phone */
-:root{color-scheme:light dark;--bg:light-dark(#fff4ef,#1c1218);--ink:light-dark(#3a1f2b,#f6e9ee);--soft:light-dark(#6d5560,#c9b3bc);--coral:#ff7a59;--mint:#7fd8be;--honey:#ffd27a;--panel:light-dark(#ffffff,#2a1b23);--line:light-dark(#f1d9cf,#45303a)}
+:root{color-scheme:light dark;--bg:light-dark(#fff4ef,#1c1218);--ink:light-dark(#3a1f2b,#f6e9ee);--soft:light-dark(#6d5560,#c9b3bc);--coral:#ff7a59;--mint:#7fd8be;--honey:#ffd27a;--cta:#f2683f;--panel:light-dark(#ffffff,#2a1b23);--line:light-dark(#f1d9cf,#45303a)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Nunito,system-ui,sans-serif;overflow-x:clip}
@@ -59,13 +59,17 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
 .note{background:rgba(255,255,255,.16);border-radius:18px;padding:12px 14px;text-align:left;width:100%;font-size:14px;animation:drop .4s ease-out}
 .note b{display:block}
 .morning .note{background:rgba(255,255,255,.6)}
+.note.wait{background:rgba(255,210,122,.24);box-shadow:inset 0 0 0 2px rgba(255,210,122,.75)}
+.morning .note.wait{background:#fff1cf}
+.big.ok{color:var(--mint)}
+.morning .big.ok{color:#2f8f72}
 @keyframes drop{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
 .wave{display:flex;gap:4px;align-items:center;height:34px}
 .wave i{width:5px;border-radius:3px;background:var(--honey);animation:w 1s infinite ease-in-out}
 @keyframes w{0%,100%{height:8px}50%{height:30px}}
 .meter{width:100%;height:8px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden}
 .meter b{display:block;height:100%;width:0;background:var(--mint);transition:width .1s linear}
-.pbtn{min-height:44px;padding:0 18px;border-radius:99px;border:0;background:var(--coral);color:#fff;font:800 16px Nunito,sans-serif;cursor:pointer}
+.pbtn{min-height:44px;padding:0 18px;border-radius:99px;border:0;background:var(--cta);color:#3a1f2b;font:800 16px Nunito,sans-serif;cursor:pointer}
 .pbtn.alt{background:#fff;color:#3a1f2b}
 .big{font:800 26px "Baloo 2",sans-serif;line-height:1.1}
 .count{font:800 34px "Baloo 2",sans-serif;font-variant-numeric:tabular-nums}
@@ -184,10 +188,10 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
     kBody.innerHTML = bear('kWait', false, "Mia's bear") + `<p class="hint">Hug sent to Grandma Ruth</p><p class="sub">Waiting for her to hug back</p><p class="count" id="cd">5:00</p>`;
     if (scen === 'awake') {
       gma.className = 'screen far';
-      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Mia is hugging her bear right now. Hug back within 5 minutes to connect.</div>` + bear('gHeart', true, "Tap the heart on Grandma Ruth's bear") + `<p class="hint">Tap your twin's heart</p>`;
+      gBody.innerHTML = `<div class="note wait"><b>Tukkibear</b>Mia is hugging her bear right now. Hug back within 5 minutes to connect.</div>` + bear('gHeart', true, "Tap the heart on Grandma Ruth's bear") + `<p class="hint">Tap your twin's heart</p>`;
       $('gHeart').onclick = connect;
     } else {
-      gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><div class="note"><b>Tukkibear · silent</b>Mia is hugging her bear right now.</div>`;
+      gBody.innerHTML = `<p class="big">Sleeping</p><p class="sub">Do not disturb is on until 7:00 am</p><div class="note wait"><b>Tukkibear · silent</b>Mia is hugging her bear right now.</div>`;
     }
     timer = setInterval(() => {
       secs -= 5; const m = Math.floor(secs / 60), s = String(secs % 60).padStart(2, '0');
@@ -197,15 +201,15 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   }
   function connect() {
     stop(); chime(); today = 1; drawCal();
-    kBody.innerHTML = bear('kOk', false, "Mia's bear") + `<p class="big">Hug connected!</p><p class="sub">Grandma Ruth hugged back from Arizona</p>`;
-    gBody.innerHTML = bear('gOk', false, "Grandma Ruth's bear") + `<p class="big">Hug connected!</p><p class="sub">Mia felt your hug in Ohio</p>`;
+    kBody.innerHTML = bear('kOk', false, "Mia's bear") + `<p class="big ok">Hug connected!</p><p class="sub">Grandma Ruth hugged back from Arizona</p>`;
+    gBody.innerHTML = bear('gOk', false, "Grandma Ruth's bear") + `<p class="big ok">Hug connected!</p><p class="sub">Mia felt your hug in Ohio</p>`;
     burst($('kBurst')); burst($('gBurst'));
   }
   function hugLeft() {
     if (scen === 'awake') {
       kBody.innerHTML = bear('kLeft', false, "Mia's bear") + `<p class="hint">Your hug is waiting for Grandma Ruth</p><p class="sub">She'll get it as soon as she picks up her bear</p>`;
-      gBody.innerHTML = `<div class="note"><b>Tukkibear</b>You missed a hug from Mia. Hug back now.</div>` + bear('gLate', true, "Tap the heart on Grandma Ruth's bear to hug back") + `<p class="hint">Tap your twin's heart</p>`;
-      $('gLate').onclick = () => { chime(); today = .5; drawCal(); gBody.innerHTML = bear('gL2', false, "Grandma Ruth's bear") + `<p class="big">Hug sent back</p>`; kBody.innerHTML = bear('kL2', false, "Mia's bear") + `<p class="big">Grandma Ruth hugged you back</p>`; burst($('kBurst')); burst($('gBurst')); };
+      gBody.innerHTML = `<div class="note wait"><b>Tukkibear</b>You missed a hug from Mia. Hug back now.</div>` + bear('gLate', true, "Tap the heart on Grandma Ruth's bear to hug back") + `<p class="hint">Tap your twin's heart</p>`;
+      $('gLate').onclick = () => { chime(); today = .5; drawCal(); gBody.innerHTML = bear('gL2', false, "Grandma Ruth's bear") + `<p class="big ok">Hug sent back</p>`; kBody.innerHTML = bear('kL2', false, "Mia's bear") + `<p class="big">Grandma Ruth hugged you back</p>`; burst($('kBurst')); burst($('gBurst')); };
       return;
     }
     kBody.innerHTML = bear('kLeft', false, "Mia's bear") + `<p class="hint">Your hug is waiting for Grandma Ruth</p><p class="sub">She'll find it when she wakes up</p>`;
@@ -216,17 +220,17 @@ main{max-width:1100px;margin:0 auto;padding:28px max(4vw,16px) 40px}
   function morning() {
     $('gTime').textContent = '7:00 am'; $('kTime').textContent = '9:00 am';
     gma.className = 'screen morning';
-    gBody.innerHTML = `<div class="note"><b>Tukkibear</b>Mia left you a hug this morning.</div>` + bear('gBack', true, "Tap the heart on Grandma Ruth's bear to hug back") + `<p class="hint">Tap your twin's heart to hug back</p>`;
+    gBody.innerHTML = `<div class="note wait"><b>Tukkibear</b>Mia left you a hug this morning.</div>` + bear('gBack', true, "Tap the heart on Grandma Ruth's bear to hug back") + `<p class="hint">Tap your twin's heart to hug back</p>`;
     $('gBack').onclick = huggedBack;
   }
   function huggedBack() {
     chime(); today = .5; drawCal();
-    gBody.innerHTML = bear('gDone', false, "Grandma Ruth's bear") + `<p class="big">Hug sent back</p><p class="sub">Mia will see it after school</p>`;
+    gBody.innerHTML = bear('gDone', false, "Grandma Ruth's bear") + `<p class="big ok">Hug sent back</p><p class="sub">Mia will see it after school</p>`;
     burst($('gBurst'));
     setTimeout(() => {
       $('kTime').textContent = '3:30 pm'; $('gTime').textContent = '1:30 pm';
       kid.className = 'screen morning';
-      kBody.innerHTML = `<div class="note"><b>Welcome home, Mia!</b>Grandma Ruth hugged you back at 7:00 am.</div>` + bear('kMorn', false, "Mia's bear") + `<p class="big">Grandma hugged you back</p>`;
+      kBody.innerHTML = `<div class="note"><b>Welcome home, Mia!</b>Grandma Ruth hugged you back at 7:00 am.</div>` + bear('kMorn', false, "Mia's bear") + `<p class="big ok">Grandma hugged you back</p>`;
       burst($('kBurst'));
     }, 1600);
   }
